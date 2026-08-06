@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Console · Initiation Sport de combat</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#E22118;--ink:#0A0B0C;--muted:#5B626C;--line:#ECEDEF;--bg:#F4F4F2;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);font-family:'Archivo',Helvetica,Arial,sans-serif;color:var(--ink);}
+  .wrap{max-width:640px;margin:0 auto;padding:18px 12px 60px;}
+  .card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 18px 44px rgba(10,11,12,.10);}
+  .head{border-bottom:3px solid var(--red);padding:20px 24px 14px;text-align:center;}
+  .head img{height:64px;width:auto;display:block;margin:0 auto;}
+  .head .k{margin:8px 0 0;font-weight:700;font-size:11px;letter-spacing:3px;color:#8A909A;text-transform:uppercase;}
+  .body{padding:22px 20px 26px;}
+  h1{margin:0 0 6px;font-weight:900;font-size:22px;text-transform:uppercase;letter-spacing:-.3px;}
+  .sub{margin:0 0 18px;font-size:14px;line-height:1.5;color:var(--muted);}
+  input[type=text],input[type=password],input[type=search]{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:13px 14px;font:inherit;font-size:15px;background:#fff;}
+  input:focus{outline:none;border-color:var(--red);}
+  .btn{display:block;width:100%;border:0;background:var(--red);color:#fff;border-radius:12px;padding:15px;font-family:'Archivo';font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;margin-top:12px;}
+  .btn:disabled{opacity:.5;cursor:default;}
+  .err{color:var(--red);font-weight:700;font-size:14px;margin:10px 0 0;display:none;}
+  .hide{display:none;}
+  .placesline{margin:-6px 0 14px;text-align:center;font-size:12.5px;font-weight:700;color:#8A909A;}
+  .counts{display:flex;gap:10px;margin:0 0 14px;}
+  .count{flex:1;border:1.5px solid var(--line);border-radius:14px;padding:12px;text-align:center;}
+  .count .n{font-weight:900;font-size:26px;line-height:1;}
+  .count .l{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8A909A;margin-top:4px;}
+  .count.red .n{color:var(--red);}
+  .toolbar{display:flex;gap:8px;margin:0 0 14px;}
+  .toolbar input{flex:1;}
+  .refresh{flex:none;border:1.5px solid var(--line);background:#fff;border-radius:12px;width:48px;font-size:19px;cursor:pointer;}
+  .row{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:14px;padding:13px 14px;margin:0 0 10px;transition:.15s;}
+  .row.here{border-color:var(--red);background:#FDEBEA;}
+  .row .who{flex:1;min-width:0;}
+  .row .nom{font-weight:800;font-size:16px;line-height:1.25;}
+  .row .when{font-size:13px;color:var(--muted);margin-top:2px;}
+  .row .contact{font-size:12.5px;margin-top:4px;}
+  .row .contact a{color:var(--red);text-decoration:none;font-weight:700;}
+  .row .contact span{color:#B6BBc2;margin:0 4px;}
+  .tick{flex:none;border:1.5px solid var(--line);background:#fff;color:#8A909A;border-radius:10px;padding:11px 13px;font-family:'Archivo';font-weight:800;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;min-width:96px;}
+  .tick.on{background:var(--red);border-color:var(--red);color:#fff;}
+  .tick:disabled{opacity:.55;cursor:default;}
+  .del{flex:none;border:0;background:none;color:#B6BBC2;font-size:17px;line-height:1;cursor:pointer;padding:8px 4px;}
+  .del:hover{color:var(--red);}
+  .del:disabled{opacity:.4;cursor:default;}
+  .empty{text-align:center;color:var(--muted);font-size:14px;padding:26px 0;}
+  .foot{background:var(--ink);color:#8A909A;text-align:center;padding:16px;font-size:12px;}
+  .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:13.5px;font-weight:700;padding:12px 18px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.3);opacity:0;pointer-events:none;transition:.25s;white-space:nowrap;}
+  .toast.show{opacity:1;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="head">
+      <img src="https://crossfithygie-collab.github.io/Hygieborne/hygie-logo.png?v=2" alt="CrossFit Hygie">
+      <p class="k">Console coach</p>
+    </div>
+    <div class="body">
+
+      <div id="lock">
+        <h1>Initiation Sport de combat</h1>
+        <p class="sub">Samedi 22 août 2026 · 14h à 16h. Entre le code coach pour voir les inscriptions et faire l'appel.</p>
+        <input type="password" id="code" placeholder="Code coach" autocomplete="off">
+        <button class="btn" id="enter">Ouvrir la console</button>
+        <p class="err" id="lockErr">Code incorrect.</p>
+      </div>
+
+      <div id="main" class="hide">
+        <h1>L'appel</h1>
+        <p class="sub">Samedi 22 août 2026 · 14h à 16h. Touche « Présent » à l'arrivée de chaque participant.</p>
+        <div class="counts">
+          <div class="count"><div class="n" id="nTotal">…</div><div class="l">Inscrits</div></div>
+          <div class="count red"><div class="n" id="nHere">…</div><div class="l">Présents</div></div>
+          <div class="count"><div class="n" id="nWait">…</div><div class="l">Attendus</div></div>
+        </div>
+        <p class="placesline" id="placesLine"></p>
+        <div class="toolbar">
+          <input type="search" id="search" placeholder="Rechercher un nom…">
+          <button class="refresh" id="refresh" title="Actualiser">⟳</button>
+        </div>
+        <div id="list"></div>
+      </div>
+
+    </div>
+    <div class="foot">CrossFit Hygie · Console interne</div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+  // Même Apps Script que la page d'inscription (Borne/combat_apps_script.gs).
+  var SHEET_URL = "https://script.google.com/macros/s/AKfycbwnq9Tke8JHqb3xjh7e1za9Te8E7r4bsvnaQMEwc5rCp2ydu12K78zo_IuCl2_Pe17Pcg/exec";
+  var code = localStorage.getItem('hygie_combat_code') || '';
+  var rows = [];
+
+  function toast(msg){
+    var t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(t._h); t._h = setTimeout(function(){ t.classList.remove('show'); }, 2600);
+  }
+  function api(params){
+    if (SHEET_URL.indexOf('http') !== 0) return Promise.reject(new Error('SHEET_URL non configurée'));
+    params.code = code;
+    return fetch(SHEET_URL + '?' + new URLSearchParams(params).toString())
+      .then(function(r){ return r.json(); });
+  }
+  function esc(s){ var d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; }
+
+  function load(showToast){
+    return api({action:'list'}).then(function(res){
+      if (!res.ok) throw new Error(res.error || 'erreur');
+      rows = res.rows || [];
+      rows.sort(function(a,b){
+        return (a.prenom + ' ' + a.nom).localeCompare(b.prenom + ' ' + b.nom, 'fr');
+      });
+      render();
+      if (showToast) toast('Liste actualisée');
+    });
+  }
+
+  function render(){
+    var q = document.getElementById('search').value.trim().toLowerCase();
+    var here = rows.filter(function(r){ return r.present; }).length;
+    document.getElementById('nTotal').textContent = rows.length;
+    document.getElementById('nHere').textContent = here;
+    document.getElementById('nWait').textContent = rows.length - here;
+    document.getElementById('placesLine').textContent = rows.length + ' places réservées sur 20';
+    var list = document.getElementById('list');
+    var shown = rows.filter(function(r){
+      if (!q) return true;
+      return (r.prenom + ' ' + r.nom).toLowerCase().indexOf(q) !== -1;
+    });
+    if (!shown.length) {
+      list.innerHTML = '<p class="empty">' + (rows.length ? 'Aucun résultat pour cette recherche.' : 'Aucune inscription pour le moment.') + '</p>';
+      return;
+    }
+    list.innerHTML = shown.map(function(r){
+      // Répare les numéros dont Sheets a mangé le 0 initial (stockés en nombre).
+      var tel = String(r.tel || '');
+      if (/^[1-9]\d{8}$/.test(tel)) tel = '0' + tel;
+      var when = '';
+      try {
+        var d = new Date(r.date);
+        when = d.toLocaleDateString('fr-FR', {day:'2-digit', month:'2-digit'}) + ' ' + d.toLocaleTimeString('fr-FR', {hour:'2-digit', minute:'2-digit'});
+      } catch(e){}
+      return '<div class="row' + (r.present ? ' here' : '') + '" data-row="' + r.row + '">' +
+        '<div class="who">' +
+          '<div class="nom">' + esc(r.prenom) + ' ' + esc(r.nom) + '</div>' +
+          (when ? '<div class="when">inscrit le ' + when + '</div>' : '') +
+          '<div class="contact"><a href="tel:' + esc(tel) + '">' + esc(tel) + '</a><span>·</span><a href="mailto:' + esc(r.email) + '">' + esc(r.email) + '</a></div>' +
+        '</div>' +
+        '<button class="tick' + (r.present ? ' on' : '') + '">' + (r.present ? '✓ Présent' : 'Présent ?') + '</button>' +
+        '<button class="del" title="Supprimer l\'inscription">✕</button>' +
+      '</div>';
+    }).join('');
+  }
+
+  document.getElementById('list').addEventListener('click', function(e){
+    var del = e.target.closest('.del');
+    if (del) {
+      var dRowEl = del.closest('.row');
+      var dn = parseInt(dRowEl.getAttribute('data-row'), 10);
+      var dr = rows.find(function(x){ return x.row === dn; }); if (!dr) return;
+      if (!confirm('Supprimer l\'inscription de ' + dr.prenom + ' ' + dr.nom + ' ?')) return;
+      del.disabled = true;
+      api({action:'delete', row:dn})
+        .then(function(res){
+          if (res.ok && res.deleted) {
+            toast('Inscription supprimée');
+            return load(false);   // recharge : les numéros de ligne changent après suppression
+          }
+          if (res.ok) { toast('Mets à jour le script (nouvelle version) pour activer la suppression.'); return; }
+          throw new Error(res.error || 'erreur');
+        })
+        .catch(function(){ toast('Suppression impossible, réessaie.'); })
+        .finally(function(){ del.disabled = false; });
+      return;
+    }
+    var btn = e.target.closest('.tick'); if (!btn) return;
+    var rowEl = btn.closest('.row');
+    var n = parseInt(rowEl.getAttribute('data-row'), 10);
+    var r = rows.find(function(x){ return x.row === n; }); if (!r) return;
+    var target = !r.present;
+    btn.disabled = true;
+    api({action:'checkin', row:n, present: target ? '1' : '0'})
+      .then(function(res){
+        if (!res.ok) throw new Error(res.error || 'erreur');
+        r.present = target;
+        render();
+      })
+      .catch(function(){ toast("Échec de l'enregistrement, réessaie."); })
+      .finally(function(){ btn.disabled = false; });
+  });
+
+  document.getElementById('search').addEventListener('input', render);
+  document.getElementById('refresh').addEventListener('click', function(){ load(true).catch(function(){ toast('Actualisation impossible.'); }); });
+
+  function unlock(){
+    document.getElementById('lockErr').style.display = 'none';
+    var btn = document.getElementById('enter');
+    btn.disabled = true; btn.textContent = 'Vérification…';
+    load(false)
+      .then(function(){
+        localStorage.setItem('hygie_combat_code', code);
+        document.getElementById('lock').classList.add('hide');
+        document.getElementById('main').classList.remove('hide');
+      })
+      .catch(function(){
+        localStorage.removeItem('hygie_combat_code');
+        document.getElementById('lockErr').style.display = 'block';
+      })
+      .finally(function(){ btn.disabled = false; btn.textContent = 'Ouvrir la console'; });
+  }
+  document.getElementById('enter').addEventListener('click', function(){
+    code = document.getElementById('code').value.trim();
+    if (code) unlock();
+  });
+  document.getElementById('code').addEventListener('keydown', function(e){
+    if (e.key === 'Enter') document.getElementById('enter').click();
+  });
+  if (code) unlock();
+</script>
+</body>
+</html>
