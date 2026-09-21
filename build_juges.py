@@ -152,7 +152,7 @@ def main():
   <div class="rappels">
     <b>Sois là 15 minutes avant ton premier heat</b>, briefing juges avant le heat 1.<br>
     Tu juges <b>une lane</b> : tu comptes les répétitions et tu valides les standards de ton athlète.<br>
-    Un doute sur un mouvement : tu appelles le <b>head judge</b>, jamais de décision dans le flou.<br>
+    Un doute sur un mouvement : tu appelles le <b>head judge</b> (Baptiste ou Jérémy), jamais de décision dans le flou.<br>
     Merci d'être là : sans vous, la course n'existe pas 💪
   </div>
 </div>
