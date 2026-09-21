@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juges · Hygie Race 4</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1800AD">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800;1,900&family=Permanent+Marker&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="race4.css?v=4">
+<style>
+  .juges-wrap{max-width:980px;margin:0 auto;padding:34px 20px 90px;position:relative;z-index:2;}
+  .juges-wrap h1{font-size:clamp(34px,9vw,54px);text-align:center;}
+  .intro{text-align:center;color:var(--soft);font-size:14.5px;line-height:1.6;margin:18px auto 0;max-width:620px;}
+  .intro b{color:#fff;}
+  h2{margin:44px 0 14px;font-weight:900;font-style:italic;font-size:15px;letter-spacing:2px;text-transform:uppercase;}
+  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1.5px solid var(--hair);border-radius:12px;background:var(--fill);}
+  table{border-collapse:collapse;width:100%;min-width:720px;font-size:13px;}
+  th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--hair);white-space:nowrap;}
+  thead th{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--soft);}
+  th[scope=row]{font-size:11px;letter-spacing:.6px;text-transform:uppercase;color:var(--soft2);font-weight:800;}
+  tr.div td{font-weight:900;font-style:italic;}
+  tr.heat td{font-weight:800;}
+  tr.lane td{color:#fff;}
+  tr:last-child th,tr:last-child td{border-bottom:0;}
+  .recherche{display:block;width:100%;max-width:340px;margin:0 auto;padding:13px 16px;border-radius:999px;
+    border:1.5px solid var(--hair);background:var(--fill);color:#fff;font:inherit;font-size:15px;text-align:center;}
+  .recherche::placeholder{color:var(--soft2);}
+  .grille{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));margin-top:16px;}
+  .juge{border:1.5px solid var(--hair);border-radius:12px;padding:15px 17px;background:var(--fill);}
+  .juge h3{margin:0 0 10px;font-weight:900;font-style:italic;font-size:17px;text-transform:uppercase;}
+  .juge ul{list-style:none;margin:0;padding:0;}
+  .juge li{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;padding:7px 0;border-top:1px solid var(--hair);font-size:13.5px;}
+  .juge li b{font-weight:900;}
+  .lane{font-size:11px;letter-spacing:.5px;text-transform:uppercase;border:1px solid var(--hair);border-radius:999px;padding:2px 8px;}
+  .quand{color:#fff;font-weight:700;}
+  .divi{width:100%;color:var(--soft2);font-size:11.5px;letter-spacing:.4px;text-transform:uppercase;}
+  .rq{margin:10px 0 0;color:var(--soft);font-size:12.5px;line-height:1.5;}
+  .juge.cache{display:none;}
+  .rappels{margin-top:34px;border-left:3px solid #fff;padding:4px 0 4px 16px;color:var(--soft);font-size:14px;line-height:1.75;}
+  .rappels b{color:#fff;}
+</style>
+</head>
+<body>
+<div class="frame"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></div>
+
+<div class="juges-wrap">
+  <div class="logo-wrap"><img class="logo" src="race4-logo.png" alt="RAC4 · CrossFit Hygie"></div>
+  <h1>Planning des juges</h1>
+  <p class="intro">Dimanche <b>4 octobre 2026</b>, de <b>7h30 à 13h30</b>, à CrossFit Hygie.<br>
+  Trouve ton nom ci-dessous : tu y vois tes heats, ta lane et tes horaires.</p>
+
+  <h2>Ton planning</h2>
+  <input class="recherche" id="q" type="search" placeholder="Tape ton nom" autocomplete="off">
+  <div class="grille" id="grille">
+    <article class="juge" data-nom="alex"><h3>Alex</h3><ul><li><b>HEAT 3</b> <span class="lane">Lane 5</span><span class="quand">09:25 – 10:45</span><span class="divi">HF MIXTE</span></li><li><b>HEAT 5</b> <span class="lane">Lane 6</span><span class="quand">10:50 – 12:10</span><span class="divi">HF MIXTE - Homme Open</span></li><li><b>HEAT 7</b> <span class="lane">Lane 1</span><span class="quand">12:15 – 13:35</span><span class="divi">HH PRO</span></li></ul></article><article class="juge" data-nom="amélie lorek"><h3>Amélie Lorek</h3><ul><li><b>HEAT 3</b> <span class="lane">Lane 1</span><span class="quand">09:25 – 10:45</span><span class="divi">HF MIXTE</span></li><li><b>HEAT 5</b> <span class="lane">Lane 2</span><span class="quand">10:50 – 12:10</span><span class="divi">HF MIXTE - Homme Open</span></li><li><b>HEAT 7</b> <span class="lane">Lane 4</span><span class="quand">12:15 – 13:35</span><span class="divi">HH PRO</span></li></ul><p class="rq">Ne commence pas tôt (1er heat 9:25)</p></article><article class="juge" data-nom="améline hego"><h3>Améline Hego</h3><ul><li><b>HEAT 1</b> <span class="lane">Lane 5</span><span class="quand">08:00 – 09:20</span><span class="divi">FF OPEN</span></li><li><b>HEAT 4</b> <span class="lane">Lane 3</span><span class="quand">10:10 – 11:30</span><span class="divi">HF MIXTE</span></li><li><b>HEAT 6</b> <span class="lane">Lane 5</span><span class="quand">11:45 – 13:05</span><span class="divi">HH OPEN</span></li></ul></article><article class="juge" data-nom="florent"><h3>Florent</h3><ul><li><b>HEAT 1</b> <span class="lane">Lane 1</span><span class="quand">08:00 – 09:20</span><span class="divi">FF OPEN</span></li><li><b>HEAT 3</b> <span class="lane">Lane 3</span><span class="quand">09:25 – 10:45</span><span class="divi">HF MIXTE</span></li><li><b>HEAT 6</b> <span class="lane">ATHLÈTE</span><span class="quand">11:45 – 13:05</span><span class="divi">HH OPEN</span></li></ul><p class="rq">Athlète HEAT 6 — libéré après le heat 3 (10:45), échauffement 11:20</p></article><article class="juge" data-nom="florian carette"><h3>Florian Carette</h3><ul><li><b>HEAT 3</b> <span class="lane">Lane 2</span><span class="quand">09:25 – 10:45</span><span class="divi">HF MIXTE</span></li><li><b>HEAT 5</b> <span class="lane">Lane 4</span><span class="quand">10:50 – 12:10</span><span class="divi">HF MIXTE - Homme Open</span></li><li><b>HEAT 7</b> <span class="lane">Lane 6</span><span class="quand">12:15 – 13:35</span><span class="divi">HH PRO</span></li></ul></article><article class="juge" data-nom="hélène guaguere"><h3>Hélène Guaguere</h3><ul><li><b>HEAT 1</b> <span class="lane">Lane 3</span><span class="quand">08:00 – 09:20</span><span class="divi">FF OPEN</span></li><li><b>HEAT 5</b> <span class="lane">Lane 3</span><span class="quand">10:50 – 12:10</span><span class="divi">HF MIXTE - Homme Open</span></li><li><b>HEAT 7</b> <span class="lane">Lane 5</span><span class="quand">12:15 – 13:35</span><span class="divi">HH PRO</span></li></ul></article><article class="juge" data-nom="jordann chmielewski"><h3>Jordann Chmielewski</h3><ul><li><b>HEAT 2</b> <span class="lane">Lane 4</span><span class="quand">08:45 – 10:05</span><span class="divi">FF OPEN - FF PRO</span></li><li><b>HEAT 4</b> <span class="lane">Lane 1</span><span class="quand">10:10 – 11:30</span><span class="divi">HF MIXTE</span></li><li><b>HEAT 6</b> <span class="lane">Lane 3</span><span class="quand">11:45 – 13:05</span><span class="divi">HH OPEN</span></li></ul></article><article class="juge" data-nom="justine hoffmann"><h3>Justine Hoffmann</h3><ul><li><b>HEAT 3</b> <span class="lane">Lane 6</span><span class="quand">09:25 – 10:45</span><span class="divi">HF MIXTE</span></li><li><b>HEAT 5</b> <span class="lane">Lane 5</span><span class="quand">10:50 – 12:10</span><span class="divi">HF MIXTE - Homme Open</span></li><li><b>HEAT 7</b> <span class="lane">Lane 2</span><span class="quand">12:15 – 13:35</span><span class="divi">HH PRO</span></li></ul></article><article class="juge" data-nom="laetitia debruyne"><h3>Laetitia debruyne</h3><ul><li><b>HEAT 1</b> <span class="lane">Lane 4</span><span class="quand">08:00 – 09:20</span><span class="divi">FF OPEN</span></li><li><b>HEAT 4</b> <span class="lane">Lane 2</span><span class="quand">10:10 – 11:30</span><span class="divi">HF MIXTE</span></li><li><b>HEAT 6</b> <span class="lane">Lane 4</span><span class="quand">11:45 – 13:05</span><span class="divi">HH OPEN</span></li></ul></article><article class="juge" data-nom="luc choteau"><h3>Luc Choteau</h3><ul><li><b>HEAT 2</b> <span class="lane">Lane 1</span><span class="quand">08:45 – 10:05</span><span class="divi">FF OPEN - FF PRO</span></li><li><b>HEAT 4</b> <span class="lane">Lane 5</span><span class="quand">10:10 – 11:30</span><span class="divi">HF MIXTE</span></li><li><b>HEAT 6</b> <span class="lane">Lane 1</span><span class="quand">11:45 – 13:05</span><span class="divi">HH OPEN</span></li></ul></article><article class="juge" data-nom="léo"><h3>Léo</h3><ul><li><b>HEAT 1</b> <span class="lane">Lane 2</span><span class="quand">08:00 – 09:20</span><span class="divi">FF OPEN</span></li><li><b>HEAT 3</b> <span class="lane">Lane 4</span><span class="quand">09:25 – 10:45</span><span class="divi">HF MIXTE</span></li><li><b>HEAT 6</b> <span class="lane">ATHLÈTE</span><span class="quand">11:45 – 13:05</span><span class="divi">HH OPEN</span></li></ul><p class="rq">Athlète HEAT 6 — libéré après le heat 3 (10:45), échauffement 11:20</p></article><article class="juge" data-nom="marine"><h3>Marine</h3><ul><li><b>HEAT 2</b> <span class="lane">Lane 3</span><span class="quand">08:45 – 10:05</span><span class="divi">FF OPEN - FF PRO</span></li><li><b>HEAT 5</b> <span class="lane">Lane 1</span><span class="quand">10:50 – 12:10</span><span class="divi">HF MIXTE - Homme Open</span></li><li><b>HEAT 7</b> <span class="lane">Lane 3</span><span class="quand">12:15 – 13:35</span><span class="divi">HH PRO</span></li></ul><p class="rq">Maintenue sur le HEAT 5</p></article><article class="juge" data-nom="nathalie destrebecq"><h3>Nathalie Destrebecq</h3><ul><li><b>HEAT 1</b> <span class="lane">Lane 6</span><span class="quand">08:00 – 09:20</span><span class="divi">FF OPEN</span></li><li><b>HEAT 4</b> <span class="lane">Lane 4</span><span class="quand">10:10 – 11:30</span><span class="divi">HF MIXTE</span></li><li><b>HEAT 6</b> <span class="lane">Lane 6</span><span class="quand">11:45 – 13:05</span><span class="divi">HH OPEN</span></li></ul></article><article class="juge" data-nom="pierre francois"><h3>Pierre Francois</h3><ul><li><b>HEAT 2</b> <span class="lane">Lane 2</span><span class="quand">08:45 – 10:05</span><span class="divi">FF OPEN - FF PRO</span></li><li><b>HEAT 4</b> <span class="lane">Lane 6</span><span class="quand">10:10 – 11:30</span><span class="divi">HF MIXTE</span></li><li><b>HEAT 6</b> <span class="lane">Lane 2</span><span class="quand">11:45 – 13:05</span><span class="divi">HH OPEN</span></li></ul></article>
+  </div>
+
+  <h2>Le planning complet</h2>
+  <div class="scroll">
+    <table>
+      <thead><tr><th></th><th>HEAT 1</th><th>HEAT 2</th><th>HEAT 3</th><th>HEAT 4</th><th>HEAT 5</th><th>HEAT 6</th><th>HEAT 7</th></tr></thead>
+      <tbody><tr class="div"><th scope="row">Division</th><td>FF OPEN</td><td>FF OPEN - FF PRO</td><td>HF MIXTE</td><td>HF MIXTE</td><td>HF MIXTE - Homme Open</td><td>HH OPEN</td><td>HH PRO</td></tr><tr class=""><th scope="row">Warm-up</th><td>07:35</td><td>08:20</td><td>09:00</td><td>09:45</td><td>10:25</td><td>11:20</td><td>11:50</td></tr><tr class=""><th scope="row">Call room</th><td>07:55</td><td>08:40</td><td>09:20</td><td>10:05</td><td>10:45</td><td>11:40</td><td>12:10</td></tr><tr class="heat"><th scope="row">Heat</th><td>08 - 09:20</td><td>08:45 - 10:05</td><td>09:25 - 10:45</td><td>10:10 - 11:30</td><td>10:50 - 12:10</td><td>11:45 - 13:05</td><td>12:15 - 13:35</td></tr><tr class="lane"><th scope="row">Lane 1</th><td>Florent</td><td>Luc Choteau</td><td>Amélie Lorek</td><td>Jordann Chmielewski</td><td>Marine</td><td>Luc Choteau</td><td>Alex</td></tr><tr class="lane"><th scope="row">Lane 2</th><td>Léo</td><td>Pierre Francois</td><td>Florian Carette</td><td>Laetitia debruyne</td><td>Amélie Lorek</td><td>Pierre Francois</td><td>HOFFMANN Justine</td></tr><tr class="lane"><th scope="row">Lane 3</th><td>Hélène Guaguere</td><td>Marine</td><td>Florent</td><td>Améline Hego</td><td>Hélène Guaguere</td><td>Jordann Chmielewski</td><td>Marine</td></tr><tr class="lane"><th scope="row">Lane 4</th><td>Laetitia debruyne</td><td>Jordann Chmielewski</td><td>Léo</td><td>Nathalie Destrebecq</td><td>Florian Carette</td><td>Laetitia debruyne</td><td>Amélie Lorek</td></tr><tr class="lane"><th scope="row">Lane 5</th><td>Améline Hego</td><td>—</td><td>Alex</td><td>Luc Choteau</td><td>HOFFMANN Justine</td><td>Améline Hego</td><td>Hélène Guaguere</td></tr><tr class="lane"><th scope="row">Lane 6</th><td>Nathalie Destrebecq</td><td>—</td><td>HOFFMANN Justine</td><td>Pierre Francois</td><td>Alex</td><td>Nathalie Destrebecq</td><td>Florian Carette</td></tr></tbody>
+    </table>
+  </div>
+
+  <div class="rappels">
+    <b>Sois là 15 minutes avant ton premier heat</b>, briefing juges avant le heat 1.<br>
+    Tu juges <b>une lane</b> : tu comptes les répétitions et tu valides les standards de ton athlète.<br>
+    Un doute sur un mouvement : tu appelles le <b>head judge</b>, jamais de décision dans le flou.<br>
+    <b>T-shirt offert</b>, et on te nourrit sur place. Merci, sans vous la course n'existe pas 💪
+  </div>
+</div>
+
+<script>
+  var q = document.getElementById('q');
+  q.addEventListener('input', function () {
+    var v = q.value.trim().toLowerCase();
+    document.querySelectorAll('.juge').forEach(function (c) {
+      c.classList.toggle('cache', v !== '' && c.dataset.nom.indexOf(v) === -1);
+    });
+  });
+</script>
+</body>
+</html>
