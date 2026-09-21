@@ -53,8 +53,11 @@ def main():
         ws = wb[nom]
         rows = [[str(c or "").strip() for c in r] for r in ws.iter_rows(values_only=True)]
         # La ligne d'en-tête du fichier commence aussi par « Heat » : on l'écarte.
+        # On ne garde que les heats JUGÉS : les lignes « ATHLÈTE » sont le passage
+        # du juge en tant que compétiteur, hors sujet ici (Jeremy, 21/09/2026).
         creneaux = [r for r in rows if r and len(r) > 4
-                    and r[0].upper().startswith("HEAT ") and r[1].lower() != "lane"]
+                    and r[0].upper().startswith("HEAT ") and r[1].lower() != "lane"
+                    and "ATHL" not in r[1].upper()]
         juges.append({"nom": nom, "creneaux": creneaux, "remarque": remarques.get(nom, "")})
     juges.sort(key=lambda j: j["nom"].lower())
 
