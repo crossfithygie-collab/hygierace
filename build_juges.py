@@ -74,9 +74,10 @@ def main():
             f'<li><b>{E(c[0])}</b> <span class="lane">{E(c[1])}</span>'
             f'<span class="quand">{E(hhmm(c[3]))} – {E(hhmm(c[4]))}</span>'
             f'<span class="divi">{E(c[2])}</span></li>' for c in j["creneaux"])
-        rq = f'<p class="rq">{E(j["remarque"])}</p>' if j["remarque"] else ""
+        # Les remarques du Récap sont des notes internes : la page n'affiche que
+        # les créneaux (demande de Jeremy, 21/09/2026).
         cartes.append(f'<article class="juge" data-nom="{E(j["nom"].lower())}">'
-                      f'<h3>{E(j["nom"])}</h3><ul>{li}</ul>{rq}</article>')
+                      f'<h3>{E(j["nom"])}</h3><ul>{li}</ul></article>')
 
     page = f"""<!DOCTYPE html>
 <html lang="fr">
