@@ -14,27 +14,27 @@
    "lanes": [
     {
      "lane": 1,
-     "juge": "Cédric Degand"
+     "juge": "Alex"
     },
     {
      "lane": 2,
-     "juge": "Florian Carette"
-    },
-    {
-     "lane": 3,
-     "juge": "Luc Choteau"
-    },
-    {
-     "lane": 4,
      "juge": "Hélène Guaguere"
     },
     {
-     "lane": 5,
+     "lane": 3,
+     "juge": "Jordann Chmielewski"
+    },
+    {
+     "lane": 4,
      "juge": "Justine Hoffmann"
     },
     {
+     "lane": 5,
+     "juge": "Nathalie Destrebecq"
+    },
+    {
      "lane": 6,
-     "juge": "Jordann Chmielewski"
+     "juge": "Pierre Francois"
     }
    ]
   },
@@ -48,19 +48,19 @@
    "lanes": [
     {
      "lane": 1,
-     "juge": "Marine"
+     "juge": "Améline Hego"
     },
     {
      "lane": 2,
-     "juge": "Laëtitia Debruyne"
+     "juge": "Cédric Degand"
     },
     {
      "lane": 3,
-     "juge": "Nathalie Destrebecq"
+     "juge": "Florian Carette"
     },
     {
      "lane": 4,
-     "juge": "À pourvoir"
+     "juge": "Marine"
     }
    ]
   },
@@ -74,23 +74,23 @@
    "lanes": [
     {
      "lane": 1,
-     "juge": "Léo de Beaurepaire"
+     "juge": "Amélie Lorek"
     },
     {
      "lane": 2,
-     "juge": "Tapio"
+     "juge": "Laëtitia Debruyne"
     },
     {
      "lane": 3,
-     "juge": "Améline Hego"
+     "juge": "Luc Choteau"
     },
     {
      "lane": 4,
-     "juge": "Alex"
+     "juge": "Léo de Beaurepaire"
     },
     {
      "lane": 5,
-     "juge": "Pierre Francois"
+     "juge": "Tapio"
     },
     {
      "lane": 6,
@@ -108,15 +108,15 @@
    "lanes": [
     {
      "lane": 1,
-     "juge": "Amélie Lorek"
+     "juge": "Alex"
     },
     {
      "lane": 2,
-     "juge": "Luc Choteau"
+     "juge": "Hélène Guaguere"
     },
     {
      "lane": 3,
-     "juge": "Hélène Guaguere"
+     "juge": "Jordann Chmielewski"
     },
     {
      "lane": 4,
@@ -124,11 +124,11 @@
     },
     {
      "lane": 5,
-     "juge": "Jordann Chmielewski"
+     "juge": "Nathalie Destrebecq"
     },
     {
      "lane": 6,
-     "juge": "À pourvoir"
+     "juge": "Pierre Francois"
     }
    ]
   },
@@ -142,15 +142,15 @@
    "lanes": [
     {
      "lane": 1,
-     "juge": "Marine"
+     "juge": "Améline Hego"
     },
     {
      "lane": 2,
-     "juge": "Laëtitia Debruyne"
+     "juge": "À pourvoir"
     },
     {
      "lane": 3,
-     "juge": "Nathalie Destrebecq"
+     "juge": "À pourvoir"
     },
     {
      "lane": 4,
@@ -176,23 +176,23 @@
    "lanes": [
     {
      "lane": 1,
-     "juge": "Tapio"
+     "juge": "Amélie Lorek"
     },
     {
      "lane": 2,
-     "juge": "Améline Hego"
+     "juge": "Laëtitia Debruyne"
     },
     {
      "lane": 3,
-     "juge": "Alex"
+     "juge": "Luc Choteau"
     },
     {
      "lane": 4,
-     "juge": "Pierre Francois"
+     "juge": "Marine"
     },
     {
      "lane": 5,
-     "juge": "À pourvoir"
+     "juge": "Tapio"
     },
     {
      "lane": 6,
@@ -210,15 +210,15 @@
    "lanes": [
     {
      "lane": 1,
-     "juge": "Amélie Lorek"
+     "juge": "Alex"
     },
     {
      "lane": 2,
-     "juge": "Luc Choteau"
+     "juge": "Hélène Guaguere"
     },
     {
      "lane": 3,
-     "juge": "Hélène Guaguere"
+     "juge": "Jordann Chmielewski"
     },
     {
      "lane": 4,
@@ -226,11 +226,11 @@
     },
     {
      "lane": 5,
-     "juge": "Jordann Chmielewski"
+     "juge": "Nathalie Destrebecq"
     },
     {
      "lane": 6,
-     "juge": "À pourvoir"
+     "juge": "Pierre Francois"
     }
    ]
   }

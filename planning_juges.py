@@ -72,7 +72,7 @@ def main():
     import random
     combis = {j: combis_possibles(j) for j in JUGES}
 
-    def tirage(graine):
+    def tirage(graine, mode):
         """Chaque juge prend, à son tour, la série qui bouche le plus de trous."""
         rnd = random.Random(graine)
         besoin = dict(LANES)
@@ -82,10 +82,12 @@ def main():
         ordre.sort(key=lambda j: len(combis[j]))
         pris = {}
         for j in ordre:
-            # on valorise les heats qui manquent le plus de juges
-            meilleur = max(combis[j],
-                           key=lambda c: (sum(besoin[h] for h in c if besoin[h] > 0),
-                                          sum(1 for h in c if besoin[h] > 0), rnd.random()))
+            if mode == 0:      # priorité au nombre de trous bouchés
+                cle = lambda c: (sum(1 for h in c if besoin[h] > 0), len(c), rnd.random())
+            else:              # priorité aux heats les plus découverts
+                cle = lambda c: (sum(besoin[h] for h in c if besoin[h] > 0),
+                                 sum(1 for h in c if besoin[h] > 0), rnd.random())
+            meilleur = max(combis[j], key=cle)
             pris[j] = meilleur
             for h in meilleur:
                 if besoin[h] > 0:
@@ -100,14 +102,49 @@ def main():
                 plan[h].append(A_POURVOIR)
         return plan, sum(1 for h in plan for n in plan[h] if n == A_POURVOIR)
 
-    best, manque = None, 10 ** 9
-    for g in range(6000):
-        p_, m = tirage(g)
-        if m < manque:
-            best, manque = p_, m
-            if m <= 3:
+    def couverture(choix):
+        """Lanes couvertes par un dictionnaire juge -> série de heats."""
+        cpt = {h: 0 for h in HEATS}
+        for cs in choix.values():
+            for h in cs:
+                cpt[h] += 1
+        return sum(min(cpt[h], LANES[h]) for h in HEATS), cpt
+
+    def depuis_plan(plan):
+        c = {j: tuple(h for h in sorted(HEATS) if j in plan[h]) for j in JUGES}
+        return {j: v for j, v in c.items()}
+
+    best_choix, best_couv = None, -1
+    for g in range(4000):
+        plan, _ = tirage(g, g % 2)
+        choix = depuis_plan(plan)
+        # amélioration locale : on change la série d'un juge si ça couvre plus
+        amelioré = True
+        while amelioré:
+            amelioré = False
+            for j in JUGES:
+                actuel, _ = couverture(choix)
+                for c in combis[j]:
+                    if c == choix[j]:
+                        continue
+                    test = dict(choix); test[j] = c
+                    v, _ = couverture(test)
+                    if v > actuel:
+                        choix, actuel, amelioré = test, v, True
+        v, _ = couverture(choix)
+        if v > best_couv:
+            best_choix, best_couv = choix, v
+            if v == sum(LANES.values()):
                 break
-    plan = best
+
+    plan = {h: [] for h in HEATS}
+    for j, cs in sorted(best_choix.items()):
+        for h in cs:
+            if len(plan[h]) < LANES[h]:
+                plan[h].append(j)
+    for h in HEATS:
+        while len(plan[h]) < LANES[h]:
+            plan[h].append(A_POURVOIR)
 
     data = {
         "evenement": "Hygie Race 4", "date": "dimanche 4 octobre 2026",
