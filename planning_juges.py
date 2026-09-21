@@ -27,6 +27,9 @@ JUGES = ["Alex", "Amélie Lorek", "Améline Hego", "Cédric Degand", "Florian Ca
          "Pierre Francois", "Tapio"]
 COURT = {"Florian Carette": 6, "Léo de Beaurepaire": 6, "Cédric Degand": 6}
 PAS_AVANT = {"Amélie Lorek": 565, "Tapio": 540}        # minutes depuis minuit
+# Essai du 21/09 : forcer les athlètes du heat 6 sur le heat 1 donne 10 lanes vides
+# au lieu de 7 (le heat 1 se remplit tout seul, eux seuls peuvent couvrir H2 et H3).
+IMPOSE = {}
 
 
 def hhmm(m):
@@ -70,7 +73,7 @@ def combis_possibles(j):
 
 def main():
     import random
-    combis = {j: combis_possibles(j) for j in JUGES}
+    combis = {j: ([IMPOSE[j]] if j in IMPOSE else combis_possibles(j)) for j in JUGES}
 
     def tirage(graine, mode):
         """Chaque juge prend, à son tour, la série qui bouche le plus de trous."""
