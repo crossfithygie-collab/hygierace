@@ -1,0 +1,243 @@
+{
+ "evenement": "Hygie Race 4",
+ "date": "dimanche 4 octobre 2026",
+ "horaire": "7h30 à 13h30",
+ "pause_mini": 20,
+ "heats": [
+  {
+   "n": 1,
+   "division": "FF OPEN",
+   "debut": "08:00",
+   "fin": "09:20",
+   "warmup": "07:35",
+   "call": "07:55",
+   "lanes": [
+    {
+     "lane": 1,
+     "juge": "Cédric Degand"
+    },
+    {
+     "lane": 2,
+     "juge": "Florian Carette"
+    },
+    {
+     "lane": 3,
+     "juge": "Luc Choteau"
+    },
+    {
+     "lane": 4,
+     "juge": "Hélène Guaguere"
+    },
+    {
+     "lane": 5,
+     "juge": "Justine Hoffmann"
+    },
+    {
+     "lane": 6,
+     "juge": "Jordann Chmielewski"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "division": "FF OPEN - FF PRO",
+   "debut": "08:45",
+   "fin": "10:05",
+   "warmup": "08:20",
+   "call": "08:40",
+   "lanes": [
+    {
+     "lane": 1,
+     "juge": "Marine"
+    },
+    {
+     "lane": 2,
+     "juge": "Laëtitia Debruyne"
+    },
+    {
+     "lane": 3,
+     "juge": "Nathalie Destrebecq"
+    },
+    {
+     "lane": 4,
+     "juge": "À pourvoir"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "division": "HF MIXTE",
+   "debut": "09:25",
+   "fin": "10:45",
+   "warmup": "09:00",
+   "call": "09:20",
+   "lanes": [
+    {
+     "lane": 1,
+     "juge": "Léo de Beaurepaire"
+    },
+    {
+     "lane": 2,
+     "juge": "Tapio"
+    },
+    {
+     "lane": 3,
+     "juge": "Améline Hego"
+    },
+    {
+     "lane": 4,
+     "juge": "Alex"
+    },
+    {
+     "lane": 5,
+     "juge": "Pierre Francois"
+    },
+    {
+     "lane": 6,
+     "juge": "À pourvoir"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "division": "HF MIXTE",
+   "debut": "10:10",
+   "fin": "11:30",
+   "warmup": "09:45",
+   "call": "10:05",
+   "lanes": [
+    {
+     "lane": 1,
+     "juge": "Amélie Lorek"
+    },
+    {
+     "lane": 2,
+     "juge": "Luc Choteau"
+    },
+    {
+     "lane": 3,
+     "juge": "Hélène Guaguere"
+    },
+    {
+     "lane": 4,
+     "juge": "Justine Hoffmann"
+    },
+    {
+     "lane": 5,
+     "juge": "Jordann Chmielewski"
+    },
+    {
+     "lane": 6,
+     "juge": "À pourvoir"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "division": "HF MIXTE - Homme Open",
+   "debut": "10:50",
+   "fin": "12:10",
+   "warmup": "10:25",
+   "call": "10:45",
+   "lanes": [
+    {
+     "lane": 1,
+     "juge": "Marine"
+    },
+    {
+     "lane": 2,
+     "juge": "Laëtitia Debruyne"
+    },
+    {
+     "lane": 3,
+     "juge": "Nathalie Destrebecq"
+    },
+    {
+     "lane": 4,
+     "juge": "À pourvoir"
+    },
+    {
+     "lane": 5,
+     "juge": "À pourvoir"
+    },
+    {
+     "lane": 6,
+     "juge": "À pourvoir"
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "division": "HH OPEN",
+   "debut": "11:45",
+   "fin": "13:05",
+   "warmup": "11:20",
+   "call": "11:40",
+   "lanes": [
+    {
+     "lane": 1,
+     "juge": "Tapio"
+    },
+    {
+     "lane": 2,
+     "juge": "Améline Hego"
+    },
+    {
+     "lane": 3,
+     "juge": "Alex"
+    },
+    {
+     "lane": 4,
+     "juge": "Pierre Francois"
+    },
+    {
+     "lane": 5,
+     "juge": "À pourvoir"
+    },
+    {
+     "lane": 6,
+     "juge": "À pourvoir"
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "division": "HH PRO",
+   "debut": "12:15",
+   "fin": "13:35",
+   "warmup": "11:50",
+   "call": "12:10",
+   "lanes": [
+    {
+     "lane": 1,
+     "juge": "Amélie Lorek"
+    },
+    {
+     "lane": 2,
+     "juge": "Luc Choteau"
+    },
+    {
+     "lane": 3,
+     "juge": "Hélène Guaguere"
+    },
+    {
+     "lane": 4,
+     "juge": "Justine Hoffmann"
+    },
+    {
+     "lane": 5,
+     "juge": "Jordann Chmielewski"
+    },
+    {
+     "lane": 6,
+     "juge": "À pourvoir"
+    }
+   ]
+  }
+ ],
+ "athletes": {
+  "Florian Carette": 6,
+  "Léo de Beaurepaire": 6,
+  "Cédric Degand": 6
+ }
+}

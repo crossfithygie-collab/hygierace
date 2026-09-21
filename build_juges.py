@@ -16,6 +16,14 @@ OUT = Path(__file__).resolve().parent / "race4-juges.html"
 E = html.escape
 
 
+# « Florent » et « Florian Carette » sont la même personne (Jeremy, 21/09/2026).
+FUSION = {"Florent": "Florian Carette"}
+
+
+def vrai_nom(n):
+    return FUSION.get(str(n).strip(), str(n).strip())
+
+
 def hhmm(v):
     s = str(v or "").strip()
     return s[:5] if len(s) >= 5 and s[2] == ":" else s
@@ -58,14 +66,23 @@ def main():
         creneaux = [r for r in rows if r and len(r) > 4
                     and r[0].upper().startswith("HEAT ") and r[1].lower() != "lane"
                     and "ATHL" not in r[1].upper()]
-        juges.append({"nom": nom, "creneaux": creneaux, "remarque": remarques.get(nom, "")})
-    juges.sort(key=lambda j: j["nom"].lower())
+        juges.append({"nom": vrai_nom(nom), "creneaux": creneaux,
+                      "remarque": remarques.get(nom, "")})
+    # Fusion des onglets d'une même personne (Florent + Florian Carette)
+    fusionnes = {}
+    for j in juges:
+        f = fusionnes.setdefault(j["nom"], {"nom": j["nom"], "creneaux": [], "remarque": ""})
+        f["creneaux"] += j["creneaux"]
+    juges = sorted(fusionnes.values(), key=lambda j: j["nom"].lower())
+    for j in juges:
+        j["creneaux"].sort(key=lambda c: c[0])
 
     # ---- tableau général -------------------------------------------------
     th = "".join(f"<th>{E(h)}</th>" for h in heats)
     def ligne(titre, vals, cls=""):
         return (f'<tr class="{cls}"><th scope="row">{E(titre)}</th>'
-                + "".join(f"<td>{E(str(v or '—'))}</td>" for v in vals[:len(heats)]) + "</tr>")
+                + "".join(f"<td>{E(vrai_nom(v) if v else '—')}</td>" for v in vals[:len(heats)])
+                + "</tr>")
     corps = (ligne("Division", divisions, "div")
              + ligne("Warm-up", warm) + ligne("Call room", call) + ligne("Heat", creneau, "heat")
              + "".join(ligne(k.title(), [str(x or "—") for x in v], "lane") for k, v in lanes))
