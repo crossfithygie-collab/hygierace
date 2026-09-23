@@ -27,10 +27,34 @@ JUGES = ["Alex", "Amélie Lorek", "Améline Hego", "Cédric Degand", "Elise Bail
          "Florian Carette", "Hélène Guaguere", "Jordann Chmielewski", "Justine Hoffmann",
          "Laëtitia Debruyne", "Luc Choteau", "Léo de Beaurepaire", "Marine Bar", "Mathias",
          "Nathalie Destrebecq", "Pierre Francois", "Romain De Bels", "Sarah Trenson"]
-COURT = {"Florian Carette": 6, "Léo de Beaurepaire": 6, "Cédric Degand": 6}
+# Juges qui COURENT aussi : détecté dans le planning athlètes (voir detecte_athletes).
+COURT = {}
 # Demandes de Jeremy : qui juge qui (heat, lane) -> juge
 IMPOSE = {(2, 1): "Romain De Bels",     # Pauline Monnier
           (5, 6): "Marine Bar"}          # Jean-Baptiste Loménech
+# Dispo toute la matinée : on leur donne le maximum de heats.
+DISPO_MAX = {"Mathias"}
+
+
+def detecte_athletes(infos):
+    """Repère les juges qui figurent aussi dans une équipe : ils ne peuvent pas
+    juger leur propre heat ni les 25 min qui précèdent leur échauffement."""
+    import re, unicodedata
+
+    def cle(x):
+        x = unicodedata.normalize("NFD", str(x).lower())
+        x = "".join(c for c in x if unicodedata.category(c) != "Mn")
+        return set(re.findall(r"[a-z]+", x))
+
+    trouve = {}
+    for (heat, _lane), info in infos.items():
+        for nom in info.get("athletes") or []:
+            ca = cle(nom)
+            for j in JUGES:
+                cj = cle(j)
+                if cj and (cj <= ca or ca <= cj or len(cj & ca) >= 2):
+                    trouve[j] = heat
+    return trouve
 
 
 def mins(t):
@@ -47,10 +71,15 @@ def chevauche(a, b):
 
 
 def possible(j, n, deja):
+    """Un juge peut prendre le heat n s'il ne court pas à ce moment-là (on bloque
+    aussi les 25 min d'échauffement avant sa course) et s'il n'a rien qui chevauche."""
     if COURT.get(j) == n:
         return False
-    if j in COURT and PLAGE[n][1] > PLAGE[COURT[j]][0] - 25:
-        return False
+    if j in COURT:
+        course = PLAGE[COURT[j]]
+        indispo = (course[0] - 25, course[1])          # échauffement + course
+        if PLAGE[n][0] < indispo[1] and indispo[0] < PLAGE[n][1]:
+            return False
     return not any(chevauche(n, k) for k in deja)
 
 
@@ -72,29 +101,21 @@ def essai(graine):
             plan[n][lane] = A_POURVOIR
             continue
         # le moins chargé d'abord, puis celui qui a le moins d'options restantes
-        cands.sort(key=lambda j: (len(pris[j]),
+        cands.sort(key=lambda j: (len(pris[j]) - (1 if j in DISPO_MAX else 0),
                                   len([m for m in HEATS if possible(j, m, pris[j])]),
                                   rnd.random()))
         j = cands[0]
         plan[n][lane] = j
         pris[j].add(n)
     trous = sum(1 for n in plan for lane in plan[n] if plan[n][lane] == A_POURVOIR)
+    # capacité réelle de chacun : un juge qui court beaucoup ne peut pas tout prendre
+    capable = {j: [n for n in HEATS if possible(j, n, ())] for j in JUGES}
+    oublies = sum(1 for j in JUGES if not pris[j] and capable[j])
     charges = [len(v) for v in pris.values()]
-    return plan, pris, trous, max(charges) - min(charges)
+    return plan, pris, trous, oublies, max(charges) - min(charges)
 
 
 def main():
-    meilleur = None
-    for g in range(20000):
-        plan, pris, trous, ecart = essai(g)
-        cle = (trous, ecart)
-        if meilleur is None or cle < meilleur[0]:
-            meilleur = (cle, plan, pris)
-            if cle == (0, 1):
-                break
-    (trous, ecart), plan, pris = meilleur
-    print(f"lanes non couvertes : {trous} | écart de charge : {ecart}")
-
     infos = {}
     if len(sys.argv) > 1:
         import openpyxl
@@ -108,12 +129,24 @@ def main():
             eq, at = rows[i + 1], rows[i + 2]
             for h in range(1, 8):
                 e = str((eq[h] if h < len(eq) else "") or "").strip()
-                a = str((at[h] if h < len(at) else "") or "").strip()
-                if e or a:
+                a_ = str((at[h] if h < len(at) else "") or "").strip()
+                if e or a_:
                     bloc = [x.strip() for x in e.split("\n") if x.strip()]
                     infos[(h, lane)] = {"equipe": bloc[0] if bloc else "",
                                         "club": bloc[1] if len(bloc) > 1 else "",
-                                        "athletes": [x.strip() for x in a.split("\n") if x.strip()]}
+                                        "athletes": [x.strip() for x in a_.split("\n") if x.strip()]}
+    COURT.update(detecte_athletes(infos))
+    print("juges qui courent :", COURT)
+
+    meilleur = None
+    for g in range(20000):
+        plan, pris, trous, oublies, ecart = essai(g)
+        # on veut : tout couvrir, personne à zéro, le plus pour les dispos, puis équilibrer
+        cle = (trous, oublies, -min((len(pris[j]) for j in DISPO_MAX), default=0), ecart)
+        if meilleur is None or cle < meilleur[0]:
+            meilleur = (cle, plan, pris)
+    (trous, oublies, _, ecart), plan, pris = meilleur
+    print(f"lanes non couvertes : {trous} | juges sans heat : {oublies} | écart de charge : {ecart}")
 
     data = {"evenement": "Hygie Race 4", "date": "dimanche 4 octobre 2026",
             "horaire": "7h30 à 13h30", "athletes": COURT, "heats": []}
