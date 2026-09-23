@@ -62,10 +62,10 @@ def main():
                       + (f' <i>{E(club)}</i>' if club else "") + '</span>' if eq else "")
                    + (f'<span class="ath">{E(ath)}</span>' if ath else "")
                    + '</li>')
-        course = (f'<p class="rq">Tu cours le <b>heat {athletes[nom]}</b> : '
-                  f'pas de jugement autour de ta course.</p>' if nom in athletes else "")
+        # Page dédiée aux créneaux de jugement : on n'y parle pas des courses
+        # des juges (demande de Jeremy, 23/09/2026).
         cartes.append(f'<article class="juge" data-nom="{E(nom.lower())}">'
-                      f'<h3>{E(nom)}</h3><ul>{li}</ul>{course}</article>')
+                      f'<h3>{E(nom)}</h3><ul>{li}</ul></article>')
 
     manque = sum(1 for h in heats for l in h["lanes"] if l["juge"] == A_POURVOIR)
     alerte = (f'<p class="alerte"><b>{manque} lanes sont encore à pourvoir.</b> Si tu peux '
