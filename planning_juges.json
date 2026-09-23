@@ -2,7 +2,6 @@
  "evenement": "Hygie Race 4",
  "date": "dimanche 4 octobre 2026",
  "horaire": "7h30 à 13h30",
- "pause_mini": 20,
  "heats": [
   {
    "n": 1,
@@ -24,7 +23,7 @@
     },
     {
      "lane": 2,
-     "juge": "Hélène Guaguere",
+     "juge": "Justine Hoffmann",
      "equipe": "Dum’belles",
      "club": "Hygieseclin",
      "athletes": [
@@ -34,7 +33,7 @@
     },
     {
      "lane": 3,
-     "juge": "Jordann Chmielewski",
+     "juge": "Amélie Lorek",
      "equipe": "Wod else",
      "club": "Hygie",
      "athletes": [
@@ -44,7 +43,7 @@
     },
     {
      "lane": 4,
-     "juge": "Justine Hoffmann",
+     "juge": "Laëtitia Debruyne",
      "equipe": "BOSS LADIES",
      "club": "",
      "athletes": [
@@ -54,7 +53,7 @@
     },
     {
      "lane": 5,
-     "juge": "Nathalie Destrebecq",
+     "juge": "Améline Hego",
      "equipe": "TEAM FEMINAFIT",
      "club": "Hygie",
      "athletes": [
@@ -64,7 +63,7 @@
     },
     {
      "lane": 6,
-     "juge": "Pierre Francois",
+     "juge": "Nathalie Destrebecq",
      "equipe": "Les cœurs de bœuf",
      "club": "Hygie",
      "athletes": [
@@ -84,7 +83,7 @@
    "lanes": [
     {
      "lane": 1,
-     "juge": "Améline Hego",
+     "juge": "Luc Choteau",
      "equipe": "Les aventurières",
      "club": "Hygie CrossFit",
      "athletes": [
@@ -94,7 +93,7 @@
     },
     {
      "lane": 2,
-     "juge": "Cédric Degand",
+     "juge": "Pierre Francois",
      "equipe": "Marie & Sara",
      "club": "",
      "athletes": [
@@ -104,7 +103,7 @@
     },
     {
      "lane": 3,
-     "juge": "Florian Carette",
+     "juge": "Marine",
      "equipe": "WomanRiser",
      "club": "Madma",
      "athletes": [
@@ -114,7 +113,7 @@
     },
     {
      "lane": 4,
-     "juge": "Marine",
+     "juge": "Jordann Chmielewski",
      "equipe": "Ah… fallait courir ?😅",
      "club": "Hygie",
      "athletes": [
@@ -134,7 +133,7 @@
    "lanes": [
     {
      "lane": 1,
-     "juge": "Amélie Lorek",
+     "juge": "Hélène Guaguere",
      "equipe": "Qui a inscrit qui?",
      "club": "Hygie",
      "athletes": [
@@ -144,7 +143,7 @@
     },
     {
      "lane": 2,
-     "juge": "Laëtitia Debruyne",
+     "juge": "Florian Carette",
      "equipe": "GuillauTine",
      "club": "Hygie CrossFit",
      "athletes": [
@@ -154,7 +153,7 @@
     },
     {
      "lane": 3,
-     "juge": "Luc Choteau",
+     "juge": "Léo de Beaurepaire",
      "equipe": "Team communication",
      "club": "Crossfit Alea",
      "athletes": [
@@ -164,7 +163,7 @@
     },
     {
      "lane": 4,
-     "juge": "Léo de Beaurepaire",
+     "juge": "Tapio",
      "equipe": "Les zinzins",
      "club": "Hygie",
      "athletes": [
@@ -174,7 +173,7 @@
     },
     {
      "lane": 5,
-     "juge": "Tapio",
+     "juge": "Cédric Degand",
      "equipe": "Les Champins",
      "club": "Crossfit vauban",
      "athletes": [
@@ -184,7 +183,7 @@
     },
     {
      "lane": 6,
-     "juge": "À pourvoir",
+     "juge": "Alex",
      "equipe": "Faites Comme Si On Était Bons",
      "club": "Hygie",
      "athletes": [
@@ -204,7 +203,7 @@
    "lanes": [
     {
      "lane": 1,
-     "juge": "Alex",
+     "juge": "Justine Hoffmann",
      "equipe": "Team Madma",
      "club": "Madma Crossfit",
      "athletes": [
@@ -214,7 +213,7 @@
     },
     {
      "lane": 2,
-     "juge": "Hélène Guaguere",
+     "juge": "Amélie Lorek",
      "equipe": "Zel & Kev",
      "club": "Defit",
      "athletes": [
@@ -224,7 +223,7 @@
     },
     {
      "lane": 3,
-     "juge": "Jordann Chmielewski",
+     "juge": "Laëtitia Debruyne",
      "equipe": "Les chats noirs",
      "club": "Hygie race",
      "athletes": [
@@ -234,7 +233,7 @@
     },
     {
      "lane": 4,
-     "juge": "Justine Hoffmann",
+     "juge": "Améline Hego",
      "equipe": "La ramasse",
      "club": "Hygie",
      "athletes": [
@@ -254,7 +253,7 @@
     },
     {
      "lane": 6,
-     "juge": "Pierre Francois",
+     "juge": "Luc Choteau",
      "equipe": "QAKC",
      "club": "Madma",
      "athletes": [
@@ -274,7 +273,7 @@
    "lanes": [
     {
      "lane": 1,
-     "juge": "Améline Hego",
+     "juge": "Pierre Francois",
      "equipe": "La belle et la bête",
      "club": "Hygie",
      "athletes": [
@@ -284,7 +283,7 @@
     },
     {
      "lane": 2,
-     "juge": "À pourvoir",
+     "juge": "Marine",
      "equipe": "Les pénouilles",
      "club": "",
      "athletes": [
@@ -294,7 +293,7 @@
     },
     {
      "lane": 3,
-     "juge": "À pourvoir",
+     "juge": "Jordann Chmielewski",
      "equipe": "Les Hobbits Joufflus",
      "club": "",
      "athletes": [
@@ -304,7 +303,7 @@
     },
     {
      "lane": 4,
-     "juge": "À pourvoir",
+     "juge": "Hélène Guaguere",
      "equipe": "je refile les burpees à ma partenaire 2",
      "club": "Hygie",
      "athletes": [
@@ -335,14 +334,14 @@
   {
    "n": 6,
    "division": "HH OPEN",
-   "debut": "11:45",
-   "fin": "13:05",
-   "warmup": "11:20",
-   "call": "11:40",
+   "debut": "11:35",
+   "fin": "12:55",
+   "warmup": "11:10",
+   "call": "11:30",
    "lanes": [
     {
      "lane": 1,
-     "juge": "Amélie Lorek",
+     "juge": "Tapio",
      "equipe": "Il est (enfin) majeur",
      "club": "hygie",
      "athletes": [
@@ -352,7 +351,7 @@
     },
     {
      "lane": 2,
-     "juge": "Laëtitia Debruyne",
+     "juge": "À pourvoir",
      "equipe": "Tendinites & Co",
      "club": "Hygie",
      "athletes": [
@@ -362,7 +361,7 @@
     },
     {
      "lane": 3,
-     "juge": "Luc Choteau",
+     "juge": "Alex",
      "equipe": "Trop grands pour toi",
      "club": "Aucun",
      "athletes": [
@@ -372,7 +371,7 @@
     },
     {
      "lane": 4,
-     "juge": "Marine",
+     "juge": "Justine Hoffmann",
      "equipe": "Jptp",
      "club": "GOLDEN BACK CROSSFIT",
      "athletes": [
@@ -382,7 +381,7 @@
     },
     {
      "lane": 5,
-     "juge": "Tapio",
+     "juge": "Amélie Lorek",
      "equipe": "Casseurs Flotteurs",
      "club": "Crossfit Bailleul",
      "athletes": [
@@ -392,7 +391,7 @@
     },
     {
      "lane": 6,
-     "juge": "À pourvoir",
+     "juge": "Laëtitia Debruyne",
      "equipe": "Les Faux-ssoyeurs",
      "club": "Crossfit Alea",
      "athletes": [
@@ -412,7 +411,7 @@
    "lanes": [
     {
      "lane": 1,
-     "juge": "Alex",
+     "juge": "Améline Hego",
      "equipe": "MedAlex",
      "club": "Crossfit LXII",
      "athletes": [
@@ -422,7 +421,7 @@
     },
     {
      "lane": 2,
-     "juge": "Hélène Guaguere",
+     "juge": "Nathalie Destrebecq",
      "equipe": "Les Tuches, le retour du retour !!",
      "club": "Hygie Crossfit Seclin",
      "athletes": [
@@ -432,7 +431,7 @@
     },
     {
      "lane": 3,
-     "juge": "Jordann Chmielewski",
+     "juge": "Luc Choteau",
      "equipe": "Ne m'attends pas, je te rejoins.",
      "club": "Hygies",
      "athletes": [
@@ -442,7 +441,7 @@
     },
     {
      "lane": 4,
-     "juge": "Justine Hoffmann",
+     "juge": "Pierre Francois",
      "equipe": "PR ou PLS",
      "club": "Hygie seclin + Badass angres",
      "athletes": [
@@ -452,7 +451,7 @@
     },
     {
      "lane": 5,
-     "juge": "Nathalie Destrebecq",
+     "juge": "Marine",
      "equipe": "B. Pitt & T. Cruise (enfin, Bernard Pitt & Thierry Cruise...les vrais avaient des choses plus intéressantes à faire que des burpees et des 200m. Nous, visiblement, on avait du temps à perdre).",
      "club": "Hygie",
      "athletes": [
@@ -462,7 +461,7 @@
     },
     {
      "lane": 6,
-     "juge": "Pierre Francois",
+     "juge": "Jordann Chmielewski",
      "equipe": "Fléo",
      "club": "Hygie",
      "athletes": [
