@@ -151,7 +151,7 @@ def main():
 
     data = {
         "evenement": "Hygie Race 4", "date": "dimanche 4 octobre 2026",
-        "horaire": "7h30 à 13h30", "pause_mini": PAUSE_MINI,
+        "horaire": "7h à 14h", "pause_mini": PAUSE_MINI,
         "heats": [{"n": h, "division": DIVISIONS[h],
                    "debut": hhmm(HEATS[h][0]), "fin": hhmm(HEATS[h][1]),
                    "warmup": hhmm(HEATS[h][0] - 25), "call": hhmm(HEATS[h][0] - 5),

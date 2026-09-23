@@ -100,7 +100,7 @@ def main():
         del h["_debut"], h["_fin"]
 
     data = {"evenement": "Hygie Race 4", "date": "dimanche 4 octobre 2026",
-            "horaire": "7h30 à 13h30", "heats": [heats[i] for i in sorted(heats)],
+            "horaire": "7h à 14h", "heats": [heats[i] for i in sorted(heats)],
             "athletes": COURT}
     (ICI / "planning_juges.json").write_text(json.dumps(data, ensure_ascii=False, indent=1),
                                              encoding="utf-8")

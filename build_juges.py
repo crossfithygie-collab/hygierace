@@ -149,7 +149,7 @@ def main():
 <div class="juges-wrap">
   <div class="logo-wrap"><img class="logo" src="race4-logo.png" alt="RAC4 · CrossFit Hygie"></div>
   <h1>Planning des juges</h1>
-  <p class="intro">Dimanche <b>4 octobre 2026</b>, de <b>7h30 à 13h30</b>, à CrossFit Hygie.<br>
+  <p class="intro">Dimanche <b>4 octobre 2026</b>, de <b>7h à 14h</b>, à CrossFit Hygie.<br>
   Trouve ton nom ci-dessous : tu y vois tes heats, ta lane et tes horaires.</p>
 
   <h2>Ton planning</h2>

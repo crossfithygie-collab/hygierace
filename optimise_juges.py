@@ -149,7 +149,7 @@ def main():
     print(f"lanes non couvertes : {trous} | juges sans heat : {oublies} | écart de charge : {ecart}")
 
     data = {"evenement": "Hygie Race 4", "date": "dimanche 4 octobre 2026",
-            "horaire": "7h30 à 13h30", "athletes": COURT, "heats": []}
+            "horaire": "7h à 14h", "athletes": COURT, "heats": []}
     for n in sorted(HEATS):
         debut, fin, div = HEATS[n]
         data["heats"].append({
