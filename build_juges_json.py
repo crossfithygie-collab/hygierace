@@ -32,9 +32,14 @@ def main():
     for i in range(6):
         vals = []
         for h in heats:
-            nom = next((l["juge"] for l in h["lanes"] if l["lane"] == i + 1), "")
-            vals.append(f'<span class="vide">{E(A_POURVOIR)}</span>' if nom == A_POURVOIR
-                        else E(nom) if nom else "—")
+            l = next((x for x in h["lanes"] if x["lane"] == i + 1), None)
+            nom = (l or {}).get("juge", "")
+            eq = (l or {}).get("equipe") or ""
+            case = ('<span class="vide">' + E(A_POURVOIR) + '</span>' if nom == A_POURVOIR
+                    else E(nom) if nom else "—")
+            if eq:
+                case += f'<br><span class="eqtab">{E(eq)}</span>'
+            vals.append(case)
         corps += ligne(f"Lane {i + 1}", vals, "lane")
 
     # ---- fiches par juge --------------------------------------------------
@@ -42,14 +47,21 @@ def main():
     for h in heats:
         for l in h["lanes"]:
             if l["juge"] and l["juge"] != A_POURVOIR:
-                par_juge.setdefault(l["juge"], []).append((h, l["lane"]))
+                par_juge.setdefault(l["juge"], []).append((h, l["lane"], l))
     cartes = []
     for nom in sorted(par_juge, key=str.lower):
-        li = "".join(
-            f'<li><b>HEAT {h["n"]}</b> <span class="lane">Lane {lane}</span>'
-            f'<span class="quand">{E(h["debut"])} – {E(h["fin"])}</span>'
-            f'<span class="divi">{E(h["division"])}</span></li>'
-            for h, lane in par_juge[nom])
+        li = ""
+        for h, lane, info in par_juge[nom]:
+            eq = info.get("equipe") or ""
+            club = info.get("club") or ""
+            ath = " · ".join(info.get("athletes") or [])
+            li += (f'<li><b>HEAT {h["n"]}</b> <span class="lane">Lane {lane}</span>'
+                   f'<span class="quand">{E(h["debut"])} – {E(h["fin"])}</span>'
+                   f'<span class="divi">{E(h["division"])}</span>'
+                   + (f'<span class="equipe">{E(eq)}'
+                      + (f' <i>{E(club)}</i>' if club else "") + '</span>' if eq else "")
+                   + (f'<span class="ath">{E(ath)}</span>' if ath else "")
+                   + '</li>')
         course = (f'<p class="rq">Tu cours le <b>heat {athletes[nom]}</b> : '
                   f'pas de jugement autour de ta course.</p>' if nom in athletes else "")
         cartes.append(f'<article class="juge" data-nom="{E(nom.lower())}">'
@@ -101,6 +113,10 @@ def main():
   .quand{{color:#fff;font-weight:700;}}
   .divi{{width:100%;color:var(--soft2);font-size:11.5px;letter-spacing:.4px;text-transform:uppercase;}}
   .rq{{margin:10px 0 0;color:var(--soft);font-size:12.5px;line-height:1.5;}}
+  .equipe{{width:100%;font-weight:900;font-size:13px;}}
+  .equipe i{{font-style:normal;font-weight:400;color:var(--soft2);}}
+  .ath{{width:100%;color:var(--soft);font-size:12.5px;}}
+  .eqtab{{font-size:11px;color:var(--soft2);white-space:nowrap;}}
   .juge.cache{{display:none;}}
   .rappels{{margin-top:34px;border-left:3px solid #fff;padding:4px 0 4px 16px;color:var(--soft);font-size:14px;line-height:1.75;}}
   .rappels b{{color:#fff;}}
@@ -113,7 +129,7 @@ def main():
   <div class="logo-wrap"><img class="logo" src="race4-logo.png" alt="RAC4 · CrossFit Hygie"></div>
   <h1>Planning des juges</h1>
   <p class="intro">{E(d["date"].capitalize())}, de <b>{E(d["horaire"])}</b>, à CrossFit Hygie.<br>
-  Trouve ton nom ci-dessous : tu y vois tes heats, ta lane et tes horaires.</p>
+  Trouve ton nom ci-dessous : tu y vois tes heats, ta lane, tes horaires et l'équipe que tu juges.</p>
   {alerte}
 
   <h2>Ton planning</h2>
