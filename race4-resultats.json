@@ -494,7 +494,7 @@
    "reps": null
   },
   {
-   "equipe": "B. Pitt & T. Cruise (enfin, Bernard Pitt & Thierry Cruise...les vrais avaient des choses plus intéressantes à faire que des burpees et des 200m. Nous, visiblement, on avait du temps à perdre).",
+   "equipe": "B. Pitt & T. Cruise",
    "club": "Hygie",
    "athletes": [
     "Maxime Morelle",
@@ -504,7 +504,8 @@
    "heat": 7,
    "lane": 5,
    "temps": null,
-   "reps": null
+   "reps": null,
+   "nom_complet": "B. Pitt & T. Cruise (enfin, Bernard Pitt & Thierry Cruise...les vrais avaient des choses plus intéressantes à faire que des burpees et des 200m. Nous, visiblement, on avait du temps à perdre)."
   },
   {
    "equipe": "Fléo",

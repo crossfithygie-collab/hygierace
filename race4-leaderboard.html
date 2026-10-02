@@ -27,7 +27,8 @@
  .lg td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,.12);vertical-align:top}
  .lg td.r{width:38px;font-size:19px;font-weight:900;text-align:center}
  .lg tr.podium td.r{color:#FFD166}
- .lg td.e{font-weight:800}
+ .lg td.e{font-weight:800;overflow-wrap:anywhere}
+ .lg td.e span{overflow-wrap:anywhere}
  .lg td.e span{display:block;font-weight:400;font-size:12.5px;opacity:.72;margin-top:2px}
  .lg td.t{text-align:right;white-space:nowrap;font-weight:900;font-size:17px;
   font-variant-numeric:tabular-nums;width:92px}
@@ -86,6 +87,12 @@ function rang(a, b){
   return rb - ra;
 }
 
+function court(n){
+  // Un nom d'equipe a rallonge deborde sur telephone : on le coupe proprement.
+  n = n || '—';
+  return n.length > 38 ? n.slice(0, 36).trim() + '…' : n;
+}
+
 function peindre(){
   var d = donnees.resultats.slice();
   var cats = ORDRE.filter(function(c){
@@ -126,7 +133,7 @@ function peindre(){
       lignes += '<tr class="' + (fini && place <= 3 ? 'podium' : '')
              + (fini || cap ? '' : ' attente') + '">'
              + '<td class="r">' + (fini || cap ? place : '·') + '</td>'
-             + '<td class="e">' + (r.equipe || '—')
+             + '<td class="e" title="' + ((r.nom_complet || r.equipe || '').replace(/"/g, '')) + '">' + court(r.equipe)
              + '<span>' + (r.athletes || []).join(' · ') + '</span></td>'
              + '<td class="t">' + score + '</td></tr>';
     });
