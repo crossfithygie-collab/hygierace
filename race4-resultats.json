@@ -1,0 +1,523 @@
+{
+ "maj": null,
+ "resultats": [
+  {
+   "equipe": "GURLZ",
+   "club": "",
+   "athletes": [
+    "Margot Moreaux",
+    "Loridan Chloé"
+   ],
+   "categorie": "FF OPEN",
+   "heat": 1,
+   "lane": 1,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Dum’belles",
+   "club": "Hygieseclin",
+   "athletes": [
+    "Priscilla Dourlens",
+    "Longuepee pascale"
+   ],
+   "categorie": "FF OPEN",
+   "heat": 1,
+   "lane": 2,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Wod else",
+   "club": "Hygie",
+   "athletes": [
+    "Mathilde Dubois",
+    "Belloy Cindy"
+   ],
+   "categorie": "FF OPEN",
+   "heat": 1,
+   "lane": 3,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "BOSS LADIES",
+   "club": "",
+   "athletes": [
+    "Alice Lagleize",
+    "Margareth Badia"
+   ],
+   "categorie": "FF OPEN",
+   "heat": 1,
+   "lane": 4,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "TEAM FEMINAFIT",
+   "club": "Hygie",
+   "athletes": [
+    "Amélie Lorek",
+    "Laureen Lepez"
+   ],
+   "categorie": "FF OPEN",
+   "heat": 1,
+   "lane": 5,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Les cœurs de bœuf",
+   "club": "Hygie",
+   "athletes": [
+    "Stéphanie Caby",
+    "Valentine Deleplace"
+   ],
+   "categorie": "FF OPEN",
+   "heat": 1,
+   "lane": 6,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Les aventurières",
+   "club": "Hygie CrossFit",
+   "athletes": [
+    "Pauline Monnier",
+    "Eulalie Sissoeff"
+   ],
+   "categorie": "FF OPEN",
+   "heat": 2,
+   "lane": 1,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Marie & Sara",
+   "club": "",
+   "athletes": [
+    "Sara Jamaal",
+    "Marie Ruffino"
+   ],
+   "categorie": "FF OPEN",
+   "heat": 2,
+   "lane": 2,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "WomanRiser",
+   "club": "Madma",
+   "athletes": [
+    "Julie Jules",
+    "Godart Marine"
+   ],
+   "categorie": "FF PRO",
+   "heat": 2,
+   "lane": 3,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Ah… fallait courir ?😅",
+   "club": "Hygie",
+   "athletes": [
+    "Sandrine Guetiere",
+    "Zucchiatti Julie"
+   ],
+   "categorie": "FF OPEN",
+   "heat": 2,
+   "lane": 4,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Qui a inscrit qui?",
+   "club": "Hygie",
+   "athletes": [
+    "Tant Coraline",
+    "Baillier Celien"
+   ],
+   "categorie": "HF MIXTE",
+   "heat": 3,
+   "lane": 1,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "GuillauTine",
+   "club": "Hygie CrossFit",
+   "athletes": [
+    "Justine Rigbourg",
+    "Carpentier Guillaume"
+   ],
+   "categorie": "HF MIXTE",
+   "heat": 3,
+   "lane": 2,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Team communication",
+   "club": "Crossfit Alea",
+   "athletes": [
+    "Cédric Daso Carron",
+    "Louise Jaunet"
+   ],
+   "categorie": "HF MIXTE",
+   "heat": 3,
+   "lane": 3,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Les zinzins",
+   "club": "Hygie",
+   "athletes": [
+    "Pauline Kolodziejczak",
+    "Dusautois Vincent"
+   ],
+   "categorie": "HF MIXTE",
+   "heat": 3,
+   "lane": 4,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Les Champins",
+   "club": "Crossfit vauban",
+   "athletes": [
+    "TARLOWSKI Manon",
+    "DANEL Victor"
+   ],
+   "categorie": "HF MIXTE",
+   "heat": 3,
+   "lane": 5,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Faites Comme Si On Était Bons",
+   "club": "Hygie",
+   "athletes": [
+    "Samuel Urbano-garcia",
+    "Nicolas Faustine"
+   ],
+   "categorie": "HF MIXTE",
+   "heat": 3,
+   "lane": 6,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Team Madma",
+   "club": "Madma Crossfit",
+   "athletes": [
+    "Anthony Marey",
+    "Marine plateel"
+   ],
+   "categorie": "HF MIXTE",
+   "heat": 4,
+   "lane": 1,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Zel & Kev",
+   "club": "Defit",
+   "athletes": [
+    "Zely Grimonpont",
+    "Kevin BOURY"
+   ],
+   "categorie": "HF MIXTE",
+   "heat": 4,
+   "lane": 2,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Les chats noirs",
+   "club": "Hygie race",
+   "athletes": [
+    "Elise Bailly",
+    "Briant Thomas"
+   ],
+   "categorie": "HF MIXTE",
+   "heat": 4,
+   "lane": 3,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "La ramasse",
+   "club": "Hygie",
+   "athletes": [
+    "Enoal Peinte",
+    "Cuvellier Marie"
+   ],
+   "categorie": "HF MIXTE",
+   "heat": 4,
+   "lane": 4,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Le coach et la bête",
+   "club": "Hygie",
+   "athletes": [
+    "Lucie senechal",
+    "Galai Younesse"
+   ],
+   "categorie": "HF MIXTE",
+   "heat": 4,
+   "lane": 5,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "QAKC",
+   "club": "Madma",
+   "athletes": [
+    "Sonia Colard",
+    "Dereumaux quentin"
+   ],
+   "categorie": "HF MIXTE",
+   "heat": 4,
+   "lane": 6,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "La belle et la bête",
+   "club": "Hygie",
+   "athletes": [
+    "Alison Dapvril",
+    "RUOLT Ulrich"
+   ],
+   "categorie": "HF MIXTE",
+   "heat": 5,
+   "lane": 1,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Les pénouilles",
+   "club": "",
+   "athletes": [
+    "Carole Barre",
+    "Bonnet thomas"
+   ],
+   "categorie": "HF MIXTE",
+   "heat": 5,
+   "lane": 2,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Les Hobbits Joufflus",
+   "club": "",
+   "athletes": [
+    "Neumann Christophe",
+    "Neumann Mélanie"
+   ],
+   "categorie": "HF MIXTE",
+   "heat": 5,
+   "lane": 3,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "je refile les burpees à ma partenaire 2",
+   "club": "Hygie",
+   "athletes": [
+    "Mailer Thomas",
+    "Boldoduck manon"
+   ],
+   "categorie": "HF MIXTE",
+   "heat": 5,
+   "lane": 4,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Felicien MAHIET",
+   "club": "Hygie Crossfit",
+   "athletes": [
+    "Felicien MAHIET"
+   ],
+   "categorie": "Homme Open",
+   "heat": 5,
+   "lane": 5,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Jean-Baptiste LOMENECH",
+   "club": "LBL Crossfit/ Opportunity",
+   "athletes": [
+    "Jean-Baptiste LOMENECH"
+   ],
+   "categorie": "Homme Open",
+   "heat": 5,
+   "lane": 6,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Il est (enfin) majeur",
+   "club": "hygie",
+   "athletes": [
+    "Magnolia Antoine",
+    "Destrebecq Gaël"
+   ],
+   "categorie": "HH OPEN",
+   "heat": 6,
+   "lane": 1,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Tendinites & Co",
+   "club": "Hygie",
+   "athletes": [
+    "Morgan Verraes",
+    "Degand Cedric"
+   ],
+   "categorie": "HH OPEN",
+   "heat": 6,
+   "lane": 2,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Trop grands pour toi",
+   "club": "Aucun",
+   "athletes": [
+    "Seys Romain",
+    "Deldalle Clément"
+   ],
+   "categorie": "HH OPEN",
+   "heat": 6,
+   "lane": 3,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Jptp",
+   "club": "GOLDEN BACK CROSSFIT",
+   "athletes": [
+    "Baptiste Coolens",
+    "Hennart Dimitry"
+   ],
+   "categorie": "HH OPEN",
+   "heat": 6,
+   "lane": 4,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Casseurs Flotteurs",
+   "club": "Crossfit Bailleul",
+   "athletes": [
+    "Derry Badi",
+    "Derhille"
+   ],
+   "categorie": "HH OPEN",
+   "heat": 6,
+   "lane": 5,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Les Faux-ssoyeurs",
+   "club": "Crossfit Alea",
+   "athletes": [
+    "Boulet Armand",
+    "Capelle Pierre"
+   ],
+   "categorie": "HH OPEN",
+   "heat": 6,
+   "lane": 6,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "MedAlex",
+   "club": "Crossfit LXII",
+   "athletes": [
+    "Mehdi Bracq",
+    "Ledent Alexandre"
+   ],
+   "categorie": "HH PRO",
+   "heat": 7,
+   "lane": 1,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Les Tuches, le retour du retour !!",
+   "club": "Hygie Crossfit Seclin",
+   "athletes": [
+    "Olivier Willem",
+    "Louage Cédric"
+   ],
+   "categorie": "HH PRO",
+   "heat": 7,
+   "lane": 2,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Ne m'attends pas, je te rejoins.",
+   "club": "Hygies",
+   "athletes": [
+    "Jérémy Deligny",
+    "Morgan Dhaussy"
+   ],
+   "categorie": "HH PRO",
+   "heat": 7,
+   "lane": 3,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "PR ou PLS",
+   "club": "Hygie seclin + Badass angres",
+   "athletes": [
+    "JOZWIAK Baptuste",
+    "DELEFORTRIE Morgan"
+   ],
+   "categorie": "HH PRO",
+   "heat": 7,
+   "lane": 4,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "B. Pitt & T. Cruise (enfin, Bernard Pitt & Thierry Cruise...les vrais avaient des choses plus intéressantes à faire que des burpees et des 200m. Nous, visiblement, on avait du temps à perdre).",
+   "club": "Hygie",
+   "athletes": [
+    "Maxime Morelle",
+    "Nicolas Barbet"
+   ],
+   "categorie": "HH PRO",
+   "heat": 7,
+   "lane": 5,
+   "temps": null,
+   "reps": null
+  },
+  {
+   "equipe": "Fléo",
+   "club": "Hygie",
+   "athletes": [
+    "Florian Carette",
+    "Léo de beaurepaire"
+   ],
+   "categorie": "HH PRO",
+   "heat": 7,
+   "lane": 6,
+   "temps": null,
+   "reps": null
+  }
+ ]
+}

@@ -5,12 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Leaderboard · Hygie Race 4</title>
 <meta property="og:title" content="Leaderboard · Hygie Race 4">
-<meta property="og:description" content="Le classement de la Hygie Race 4 sera disponible ici.">
+<meta property="og:description" content="Le classement en direct de la Hygie Race 4, dimanche 4 octobre 2026.">
 <meta property="og:image" content="https://crossfithygie-collab.github.io/Hygieborne/race4-logo.png">
 <meta name="theme-color" content="#1800AD">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800;1,900&family=Permanent+Marker&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="race4.css?v=4">
+<style>
+ .barre{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+ .barre button{font-family:inherit;font-size:12px;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;padding:9px 14px;border-radius:99px;cursor:pointer;
+  border:1.5px solid rgba(255,255,255,.22);background:transparent;color:inherit}
+ .barre button[aria-pressed=true]{background:#fff;color:#1800AD;border-color:#fff}
+ .maj{font-size:12.5px;opacity:.7;margin:0 0 18px}
+ .cat{margin:0 0 30px}
+ .cat h2{font-size:14px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;
+  margin:0 0 10px;padding-bottom:7px;border-bottom:2px solid currentColor}
+ .lg{width:100%;border-collapse:collapse;font-size:15px}
+ .lg th{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+  text-align:left;padding:6px 8px;opacity:.6}
+ .lg td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,.12);vertical-align:top}
+ .lg td.r{width:38px;font-size:19px;font-weight:900;text-align:center}
+ .lg tr.podium td.r{color:#FFD166}
+ .lg td.e{font-weight:800}
+ .lg td.e span{display:block;font-weight:400;font-size:12.5px;opacity:.72;margin-top:2px}
+ .lg td.t{text-align:right;white-space:nowrap;font-weight:900;font-size:17px;
+  font-variant-numeric:tabular-nums;width:92px}
+ .lg td.t small{display:block;font-size:11px;font-weight:600;opacity:.7}
+ .lg tr.attente td{opacity:.5}
+ .vide{font-size:14px;opacity:.7;padding:10px 0}
+</style>
 </head>
 <body>
 <div class="frame"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></div>
@@ -18,7 +42,7 @@
 <nav class="nav">
   <ul>
     <li><a href="index.html">Accueil</a></li>
-    <li><a href="index.html">Inscription</a></li>
+    <li><a href="race4-juges.html">Juges</a></li>
     <li><a href="race4-leaderboard.html" class="active">Leaderboard</a></li>
   </ul>
 </nav>
@@ -26,14 +50,117 @@
 <div class="wrap">
   <div class="logo-wrap anim" style="animation-delay:.05s"><img class="logo" src="race4-logo.png" alt="RAC4 · CrossFit Hygie"></div>
 
-  <div class="soon">
-    <span class="badge">Bientôt</span>
+  <div class="hero">
+    <span class="stamp">04 · 10 · 26</span>
     <h1>Leaderboard</h1>
-    <p>Le classement en direct de la Hygie Race 4 s'affichera ici le jour J, le 4 octobre 2026. Reviens le suivre en live.</p>
-    <div class="cta-wrap" style="margin-top:34px"><a class="cta" href="index.html">Je m'inscris <span class="arrow">→</span></a></div>
   </div>
 
-  <div class="foot"><a href="index.html">← Retour à l'accueil</a><br><br>CrossFit Hygie · 257 rue de l'industrie, 59113 Seclin</div>
+  <p class="maj" id="maj">Chargement du classement…</p>
+  <div class="barre" id="barre"></div>
+  <div id="classement"></div>
+
+  <div class="foot"><a href="index.html">← Retour à l'accueil</a><br><br>
+    CrossFit Hygie · 257 rue de l'industrie, 59113 Seclin</div>
 </div>
+
+<script>
+// L'ordre d'affichage des categories, du duo au solo.
+var ORDRE = ['FF OPEN','FF PRO','HH OPEN','HH PRO','HF MIXTE',
+             'Femme Open','Femme Pro','Homme Open','Homme Pro'];
+var filtre = 'tout', donnees = null;
+
+function secondes(t){            // "72:14" ou "1:12:14" -> secondes
+  var p = String(t).split(':').map(Number);
+  if (p.some(isNaN)) return null;
+  return p.length === 3 ? p[0]*3600 + p[1]*60 + p[2] : p[0]*60 + p[1];
+}
+
+function rang(a, b){
+  // Celui qui franchit la ligne passe toujours devant celui qui est au cap.
+  var ta = secondes(a.temps), tb = secondes(b.temps);
+  if (ta !== null && tb !== null) return ta - tb;
+  if (ta !== null) return -1;
+  if (tb !== null) return 1;
+  // Au cap : le plus de reps devant. Sans score : a la fin.
+  var ra = a.reps == null ? -1 : a.reps, rb = b.reps == null ? -1 : b.reps;
+  return rb - ra;
+}
+
+function peindre(){
+  var d = donnees.resultats.slice();
+  var cats = ORDRE.filter(function(c){
+    return d.some(function(r){ return r.categorie === c; });
+  });
+  d.forEach(function(r){ if (cats.indexOf(r.categorie) < 0) cats.push(r.categorie); });
+
+  // Les boutons de filtre
+  var b = document.getElementById('barre');
+  if (!b.children.length){
+    ['tout'].concat(cats).forEach(function(c){
+      var bt = document.createElement('button');
+      bt.textContent = c === 'tout' ? 'Toutes' : c;
+      bt.setAttribute('aria-pressed', c === filtre);
+      bt.onclick = function(){
+        filtre = c;
+        [].forEach.call(b.children, function(x){
+          x.setAttribute('aria-pressed', x.textContent === (c === 'tout' ? 'Toutes' : c));
+        });
+        peindre();
+      };
+      b.appendChild(bt);
+    });
+  }
+
+  var sortie = '';
+  cats.forEach(function(c){
+    if (filtre !== 'tout' && filtre !== c) return;
+    var lot = d.filter(function(r){ return r.categorie === c; }).sort(rang);
+    var lignes = '';
+    var place = 0;
+    lot.forEach(function(r){
+      var fini = secondes(r.temps) !== null, cap = r.reps != null;
+      if (fini || cap) place++;
+      var score = fini ? r.temps
+                : cap ? '<span>CAP</span><small>' + r.reps + ' reps</small>'
+                : '—';
+      lignes += '<tr class="' + (fini && place <= 3 ? 'podium' : '')
+             + (fini || cap ? '' : ' attente') + '">'
+             + '<td class="r">' + (fini || cap ? place : '·') + '</td>'
+             + '<td class="e">' + (r.equipe || '—')
+             + '<span>' + (r.athletes || []).join(' · ') + '</span></td>'
+             + '<td class="t">' + score + '</td></tr>';
+    });
+    sortie += '<div class="cat"><h2>' + c + '</h2>'
+            + (lot.length
+               ? '<table class="lg"><thead><tr><th></th><th>Équipe</th>'
+                 + '<th style="text-align:right">Temps</th></tr></thead>'
+                 + '<tbody>' + lignes + '</tbody></table>'
+               : '<p class="vide">Aucune équipe.</p>')
+            + '</div>';
+  });
+  document.getElementById('classement').innerHTML = sortie;
+
+  var m = document.getElementById('maj');
+  if (donnees.maj){
+    var dt = new Date(donnees.maj);
+    m.textContent = 'Mis à jour à ' + ('0'+dt.getHours()).slice(-2) + 'h'
+                  + ('0'+dt.getMinutes()).slice(-2) + '. La page se rafraîchit toute seule.';
+  } else {
+    m.textContent = 'Les résultats s’afficheront ici au fil des vagues, dimanche 4 octobre.';
+  }
+}
+
+function charger(){
+  fetch('race4-resultats.json?t=' + Date.now())
+    .then(function(r){ return r.json(); })
+    .then(function(d){ donnees = d; peindre(); })
+    .catch(function(){
+      document.getElementById('maj').textContent =
+        'Classement momentanément indisponible. Réessaie dans une minute.';
+    });
+}
+charger();
+setInterval(charger, 60000);   // le spectateur n'a rien à rafraîchir
+</script>
 </body>
 </html>
