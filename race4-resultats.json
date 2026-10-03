@@ -12,7 +12,7 @@
    "heat": 1,
    "lane": 1,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Dum’belles",
@@ -25,7 +25,7 @@
    "heat": 1,
    "lane": 2,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Wod else",
@@ -38,7 +38,7 @@
    "heat": 1,
    "lane": 3,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "BOSS LADIES",
@@ -51,7 +51,7 @@
    "heat": 1,
    "lane": 4,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "TEAM FEMINAFIT",
@@ -64,7 +64,7 @@
    "heat": 1,
    "lane": 5,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Les cœurs de bœuf",
@@ -77,7 +77,7 @@
    "heat": 1,
    "lane": 6,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Les aventurières",
@@ -90,7 +90,7 @@
    "heat": 2,
    "lane": 1,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Marie & Sara",
@@ -103,7 +103,7 @@
    "heat": 2,
    "lane": 2,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "WomanRiser",
@@ -116,7 +116,7 @@
    "heat": 2,
    "lane": 3,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Ah… fallait courir ?😅",
@@ -129,7 +129,7 @@
    "heat": 2,
    "lane": 4,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Qui a inscrit qui?",
@@ -142,7 +142,7 @@
    "heat": 3,
    "lane": 1,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "GuillauTine",
@@ -155,7 +155,7 @@
    "heat": 3,
    "lane": 2,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Team communication",
@@ -168,7 +168,7 @@
    "heat": 3,
    "lane": 3,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Les zinzins",
@@ -181,7 +181,7 @@
    "heat": 3,
    "lane": 4,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Les Champins",
@@ -194,7 +194,7 @@
    "heat": 3,
    "lane": 5,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Faites Comme Si On Était Bons",
@@ -207,7 +207,7 @@
    "heat": 3,
    "lane": 6,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Team Madma",
@@ -220,7 +220,7 @@
    "heat": 4,
    "lane": 1,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Zel & Kev",
@@ -233,7 +233,7 @@
    "heat": 4,
    "lane": 2,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Les chats noirs",
@@ -246,7 +246,7 @@
    "heat": 4,
    "lane": 3,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "La ramasse",
@@ -259,7 +259,7 @@
    "heat": 4,
    "lane": 4,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Le coach et la bête",
@@ -272,7 +272,7 @@
    "heat": 4,
    "lane": 5,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "QAKC",
@@ -285,7 +285,7 @@
    "heat": 4,
    "lane": 6,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "La belle et la bête",
@@ -298,7 +298,7 @@
    "heat": 5,
    "lane": 1,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Les pénouilles",
@@ -311,7 +311,7 @@
    "heat": 5,
    "lane": 2,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Les Hobbits Joufflus",
@@ -324,7 +324,7 @@
    "heat": 5,
    "lane": 3,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "je refile les burpees à ma partenaire 2",
@@ -337,7 +337,7 @@
    "heat": 5,
    "lane": 4,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Felicien MAHIET",
@@ -349,7 +349,7 @@
    "heat": 5,
    "lane": 5,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Jean-Baptiste LOMENECH",
@@ -361,7 +361,7 @@
    "heat": 5,
    "lane": 6,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Il est (enfin) majeur",
@@ -374,7 +374,7 @@
    "heat": 6,
    "lane": 1,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Tendinites & Co",
@@ -387,7 +387,7 @@
    "heat": 6,
    "lane": 2,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Trop grands pour toi",
@@ -400,7 +400,7 @@
    "heat": 6,
    "lane": 3,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Jptp",
@@ -413,7 +413,7 @@
    "heat": 6,
    "lane": 4,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Casseurs Flotteurs",
@@ -426,7 +426,7 @@
    "heat": 6,
    "lane": 5,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Les Faux-ssoyeurs",
@@ -439,7 +439,7 @@
    "heat": 6,
    "lane": 6,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "MedAlex",
@@ -452,7 +452,7 @@
    "heat": 7,
    "lane": 1,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Les Tuches, le retour du retour !!",
@@ -465,7 +465,7 @@
    "heat": 7,
    "lane": 2,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "Ne m'attends pas, je te rejoins.",
@@ -478,7 +478,7 @@
    "heat": 7,
    "lane": 3,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "PR ou PLS",
@@ -491,7 +491,7 @@
    "heat": 7,
    "lane": 4,
    "temps": null,
-   "reps": null
+   "manque": null
   },
   {
    "equipe": "B. Pitt & T. Cruise",
@@ -504,8 +504,8 @@
    "heat": 7,
    "lane": 5,
    "temps": null,
-   "reps": null,
-   "nom_complet": "B. Pitt & T. Cruise (enfin, Bernard Pitt & Thierry Cruise...les vrais avaient des choses plus intéressantes à faire que des burpees et des 200m. Nous, visiblement, on avait du temps à perdre)."
+   "nom_complet": "B. Pitt & T. Cruise (enfin, Bernard Pitt & Thierry Cruise...les vrais avaient des choses plus intéressantes à faire que des burpees et des 200m. Nous, visiblement, on avait du temps à perdre).",
+   "manque": null
   },
   {
    "equipe": "Fléo",
@@ -518,7 +518,7 @@
    "heat": 7,
    "lane": 6,
    "temps": null,
-   "reps": null
+   "manque": null
   }
  ]
 }

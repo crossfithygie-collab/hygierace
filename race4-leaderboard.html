@@ -118,9 +118,13 @@ function rang(a, b){
   if (ta !== null && tb !== null) return ta - tb;
   if (ta !== null) return -1;
   if (tb !== null) return 1;
-  // Au cap : le plus de reps devant. Sans score : a la fin.
-  var ra = a.reps == null ? -1 : a.reps, rb = b.reps == null ? -1 : b.reps;
-  return rb - ra;
+  // Au cap, le score est le nombre de reps qui manquaient pour finir :
+  // CAP+20 est donc meilleur que CAP+21. Sans score : a la fin.
+  var ma = a.manque, mb = b.manque;
+  if (ma != null && mb != null) return ma - mb;
+  if (ma != null) return -1;
+  if (mb != null) return 1;
+  return 0;
 }
 
 function court(n){
@@ -161,10 +165,10 @@ function peindre(){
     var lignes = '';
     var place = 0;
     lot.forEach(function(r){
-      var fini = secondes(r.temps) !== null, cap = r.reps != null;
+      var fini = secondes(r.temps) !== null, cap = r.manque != null;
       if (fini || cap) place++;
       var score = fini ? r.temps
-                : cap ? '<span>CAP</span><small>' + r.reps + ' reps</small>'
+                : cap ? 'CAP+' + r.manque + '<small>reps manquantes</small>'
                 : '—';
       lignes += '<tr class="' + (fini && place <= 3 ? 'podium' : '')
              + (fini || cap ? '' : ' attente') + '">'
