@@ -40,13 +40,12 @@
     Les Chromecast rognent les bords, et contre ca il faut reduire l'image, pas
     poser une marge : d'ou le scale sur la page entiere. */
  body.tv{overflow:hidden}
- body.tv .nav,body.tv .foot,body.tv .barre,body.tv .logo-wrap{display:none}
+ /* Sur la TV, le classement et rien d'autre : ni logo, ni titre, ni menu. */
+ body.tv .nav,body.tv .foot,body.tv .barre,body.tv .logo-wrap,
+ body.tv .hero,body.tv .frame{display:none}
  body.tv .wrap{transform:scale(.93);transform-origin:top center;
-   max-width:none;width:100%;padding:18px 34px 0}
- body.tv .hero{margin:0 0 10px;display:flex;align-items:baseline;gap:18px}
- body.tv .hero h1{font-size:46px;margin:0}
- body.tv .stamp{font-size:19px}
- body.tv .maj{font-size:17px;margin:0 0 14px;opacity:.75}
+   max-width:none;width:100%;padding:26px 34px 0}
+ body.tv .maj{font-size:15px;margin:0 0 12px;opacity:.55}
  body.tv #classement{display:grid;grid-template-columns:1fr 1fr;gap:0 44px;
    align-content:start}
  body.tv .cat{margin:0 0 18px;break-inside:avoid}
