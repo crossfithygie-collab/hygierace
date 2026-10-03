@@ -246,8 +246,16 @@ setInterval(charger, 60000);   // le spectateur n'a rien à rafraîchir
         haut += h;
       });
       lots.push([debut, lignes.length]);
-      lots.forEach(function(x, i){
-        out.push({cat: ic, de: x[0], a: x[1], n: i + 1, sur: lots.length}); });
+      // On sait maintenant combien de pages il faut : on repartit les equipes
+      // a parts egales, pour ne pas finir sur une page a une seule ligne.
+      var nb = lots.length, taille = Math.ceil(lignes.length / nb), i = 0;
+      lots = [];
+      while (i < lignes.length){
+        lots.push([i, Math.min(lignes.length, i + taille)]);
+        i += taille;
+      }
+      lots.forEach(function(x, k){
+        out.push({cat: ic, de: x[0], a: x[1], n: k + 1, sur: lots.length}); });
     });
     return out;
   }
