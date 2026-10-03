@@ -66,6 +66,13 @@ function hhmm(h){ return (h || '').replace(':', 'h'); }
 function echappe(x){ return String(x == null ? '' : x)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
+// Un nom d'equipe a rallonge (il y en a un de 192 caracteres) mangerait toute
+// la colonne : on le coupe proprement, le nom entier reste dans l'infobulle.
+function court(n, max){
+  n = (n || '').trim();
+  return n.length > max ? n.slice(0, max - 1).trim() + '\u2026' : n;
+}
+
 function horloge(){
   var d = new Date();
   document.getElementById('heure').textContent =
@@ -86,7 +93,8 @@ function aVenir(){
 function equipes(v, vedette){
   if (!(v.equipes || []).length) return '';
   return '<div class="eq">' + v.equipes.map(function(e){
-    return '<div><i>' + e.lane + '</i><b>' + echappe(e.equipe)
+    return '<div title="' + echappe(e.equipe) + '"><i>' + e.lane + '</i><b>'
+      + echappe(court(e.equipe, vedette ? 30 : 34))
       + (vedette ? '<small>' + (e.athletes || []).map(echappe).join(' · ')
                  + '</small>' : '') + '</b></div>';
   }).join('') + '</div>';
