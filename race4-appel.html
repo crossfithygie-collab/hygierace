@@ -58,7 +58,7 @@
 // L'ecran de la zone d'appel. Il repond a une seule question, celle que tout le
 // monde pose : « c'est quand qu'on s'echauffe ? ». La vague a venir est en
 // grand, avec ses equipes ; les suivantes defilent dessous.
-var vagues = [], suivante = 0;
+var vagues = [], suivante = 0, vedetteVue = null;
 
 function mins(h){ var p = (h || '0:0').split(':'); return +p[0] * 60 + +p[1]; }
 function maintenant(){ var d = new Date(); return d.getHours() * 60 + d.getMinutes(); }
@@ -120,6 +120,9 @@ function peindre(){
     z.innerHTML = '<p class="rien">Toutes les vagues sont parties. Bravo à tous ! 🎉</p>';
     return;
   }
+  // La vedette ne bouge pas tant que sa vague n'est pas partie. Quand elle
+  // change, le defilement repart de la vague juste apres, pas au milieu.
+  if (vedetteVue !== i){ vedetteVue = i; suivante = 0; }
   var v = vagues[i], m = maintenant();
   var quoi = m >= mins(v.appel) ? 'En appel, maintenant'
            : m >= mins(v.echauffement) ? 'À l’échauffement, maintenant'
