@@ -46,6 +46,7 @@
  body.tv .wrap{transform:scale(.93);transform-origin:top center;
    max-width:none;width:100%;padding:26px 34px 0}
  body.tv .maj{font-size:15px;margin:0 0 12px;opacity:.55;text-align:left}
+ body.tv #classement{transform-origin:top left}
  body.tv .cat h2,body.tv .lg td.e{text-align:left}
 
  body.tv #classement{display:grid;grid-template-columns:1fr 1fr;gap:0 44px;
@@ -225,10 +226,14 @@ setInterval(charger, 60000);   // le spectateur n'a rien à rafraîchir
   // Une categorie trop longue ne se tasse pas : elle se coupe en plusieurs
   // pages. On mesure les lignes a leur vraie taille, puis on remplit page par
   // page tant que ca rentre. Mieux vaut deux ecrans lisibles qu'un illisible.
+  var MINI = +(q.get('mini') || 6);     // jamais moins de six equipes par ecran
+
   function decouper(){
     var cats = [].slice.call(document.querySelectorAll('#classement .cat'));
     if (!cats.length) return [];
     var dispo = placeDispo(), out = [];
+    var z0 = document.getElementById('classement');
+    z0.style.transform = 'none'; z0.style.width = '';   // on mesure a nu
     cats.forEach(function(c, ic){
       c.style.display = '';
       var lignes = [].slice.call(c.querySelectorAll('tbody tr'));
@@ -237,15 +242,25 @@ setInterval(charger, 60000);   // le spectateur n'a rien à rafraîchir
       var tete = c.getBoundingClientRect().height
                - lignes.reduce(function(h, l){
                    return h + l.getBoundingClientRect().height; }, 0);
-      var lots = [], haut = tete, debut = 0;
-      lignes.forEach(function(l, i){
-        var h = l.getBoundingClientRect().height;
-        if (haut + h > dispo && i > debut){
-          lots.push([debut, i]); debut = i; haut = tete;
-        }
-        haut += h;
-      });
-      lots.push([debut, lignes.length]);
+      // Combien d'equipes tiennent a taille normale, et combien il en faut.
+      var hauts = lignes.map(function(l){
+        return l.getBoundingClientRect().height; });
+      var tient = 0, cumul = tete;
+      while (tient < lignes.length && cumul + hauts[tient] <= dispo){
+        cumul += hauts[tient]; tient++;
+      }
+      tient = Math.max(1, tient);
+      // On veut au moins MINI equipes a l'ecran : si elles ne rentrent pas a
+      // taille normale, c'est l'image qui se reduit, pas la page qui se coupe.
+      var vise = Math.min(lignes.length, Math.max(MINI, tient));
+      var besoin = tete;
+      for (var k = 0; k < vise; k++) besoin += hauts[k];
+      var ech = besoin > dispo ? Math.max(.5, dispo / besoin) : 1;
+      var lots = [], i0 = 0;
+      while (i0 < lignes.length){
+        lots.push([i0, Math.min(lignes.length, i0 + vise)]);
+        i0 += vise;
+      }
       // On sait maintenant combien de pages il faut : on repartit les equipes
       // a parts egales, pour ne pas finir sur une page a une seule ligne.
       var nb = lots.length, taille = Math.ceil(lignes.length / nb), i = 0;
@@ -255,7 +270,8 @@ setInterval(charger, 60000);   // le spectateur n'a rien à rafraîchir
         i += taille;
       }
       lots.forEach(function(x, k){
-        out.push({cat: ic, de: x[0], a: x[1], n: k + 1, sur: lots.length}); });
+        out.push({cat: ic, de: x[0], a: x[1], n: k + 1, sur: lots.length,
+                  ech: ech}); });
     });
     return out;
   }
@@ -270,6 +286,9 @@ setInterval(charger, 60000);   // le spectateur n'a rien à rafraîchir
     [].slice.call(c.querySelectorAll('tbody tr')).forEach(function(l, i){
       l.style.display = (i >= p.de && i < p.a) ? '' : 'none';
     });
+    var z = document.getElementById('classement');
+    z.style.transform = p.ech < 1 ? 'scale(' + p.ech.toFixed(3) + ')' : 'none';
+    z.style.width = p.ech < 1 ? (100 / p.ech).toFixed(2) + '%' : '';
     var h2 = c.querySelector('h2');
     if (h2){
       var nom = h2.dataset.nom || (h2.dataset.nom = h2.textContent);
