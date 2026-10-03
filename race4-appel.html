@@ -11,7 +11,10 @@
 <style>
  body{overflow:hidden}
  .nav,.foot,.logo-wrap,.frame{display:none}
- .wrap{max-width:none;width:100%;padding:22px 34px 0}
+ /* Les televiseurs rognent les bords : contre l'overscan il faut reduire
+    l'image, pas poser une marge. */
+ .wrap{max-width:none;width:100%;padding:22px 34px 0;
+  transform:scale(.93);transform-origin:top center}
  .tete{display:flex;align-items:baseline;gap:16px;margin:0 0 12px}
  .tete .titre{font-size:17px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;
   opacity:.7}
@@ -34,13 +37,18 @@
   text-transform:uppercase;opacity:.6}
  .horaires b{font-size:30px;font-weight:900;line-height:1.1}
  .carte:not(.vedette) .horaires b{font-size:21px}
- .eq{display:grid;grid-template-columns:repeat(3,1fr);gap:4px 26px}
- .eq div{display:flex;gap:10px;align-items:baseline;padding:5px 0;
+ /* minmax(0,1fr) : sans ca, une colonne de grille s'elargit au nom le plus
+    long au lieu de le couper, et le cadre deborde de l'ecran. */
+ .eq{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 26px}
+ .eq div{display:flex;gap:10px;align-items:baseline;padding:5px 0;min-width:0;
   border-bottom:1px solid rgba(255,255,255,.1)}
  .eq i{font-style:normal;font-weight:900;font-size:17px;opacity:.5;width:26px;flex:none}
  .eq b{font-size:21px;font-weight:800;overflow:hidden;text-overflow:ellipsis;
-  white-space:nowrap}
- .eq small{display:block;font-size:13px;font-weight:400;opacity:.7}
+  white-space:nowrap;min-width:0;flex:1}
+ .eq small{display:block;font-size:13px;font-weight:400;opacity:.7;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .ligne{min-width:0}
+ .div{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:46%}
  .carte:not(.vedette) .eq b{font-size:16px}
  .carte:not(.vedette) .eq small{display:none}
  .fini{opacity:.45}
@@ -94,7 +102,7 @@ function equipes(v, vedette){
   if (!(v.equipes || []).length) return '';
   return '<div class="eq">' + v.equipes.map(function(e){
     return '<div title="' + echappe(e.equipe) + '"><i>' + e.lane + '</i><b>'
-      + echappe(court(e.equipe, vedette ? 30 : 34))
+      + echappe(court(e.equipe, vedette ? 26 : 30))
       + (vedette ? '<small>' + (e.athletes || []).map(echappe).join(' · ')
                  + '</small>' : '') + '</b></div>';
   }).join('') + '</div>';
