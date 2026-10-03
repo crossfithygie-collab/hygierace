@@ -45,7 +45,10 @@
  body.tv .hero,body.tv .frame{display:none}
  body.tv .wrap{transform:scale(.93);transform-origin:top center;
    max-width:none;width:100%;padding:26px 34px 0}
- body.tv .maj{font-size:15px;margin:0 0 12px;opacity:.55}
+ body.tv .maj{font-size:15px;margin:0 0 12px;opacity:.55;text-align:left}
+ body.tv .cat h2,body.tv .lg td.e{text-align:left}
+ /* Le cadre s'ajuste a l'ecran : voir ajusterTV(). */
+ body.tv #classement{transform-origin:top left}
  body.tv #classement{display:grid;grid-template-columns:1fr 1fr;gap:0 44px;
    align-content:start}
  body.tv .cat{margin:0 0 18px;break-inside:avoid}
@@ -213,13 +216,27 @@ setInterval(charger, 60000);   // le spectateur n'a rien à rafraîchir
   if (!defile) return;
   document.body.classList.add('solo');
   var rang = 0;
+  function ajusterTV(){
+    // Une categorie remplit l'ecran sans jamais le deborder : on mesure, et on
+    // reduit l'image si besoin. Sur un televiseur, une ligne coupee en bas est
+    // pire qu'un texte un peu plus petit.
+    var z = document.getElementById('classement');
+    z.style.transform = 'none';
+    var dispo = window.innerHeight - z.getBoundingClientRect().top - 24;
+    var h = z.scrollHeight;
+    var k = h > dispo && h > 0 ? Math.max(.45, dispo / h) : 1;
+    z.style.transform = k < 1 ? 'scale(' + k.toFixed(3) + ')' : 'none';
+    z.style.width = k < 1 ? (100 / k).toFixed(2) + '%' : '';
+  }
   function tourner(){
     var cats = document.querySelectorAll('#classement .cat');
     if (!cats.length) return;
     rang = rang % cats.length;
     cats.forEach(function(c, i){ c.style.display = i === rang ? '' : 'none'; });
     rang++;
+    ajusterTV();
   }
+  window.addEventListener('resize', ajusterTV);
   // Le classement se redessine tout seul : on remet la rotation en place apres.
   var peindreOrig = peindre;
   peindre = function(){ peindreOrig(); tourner(); };
