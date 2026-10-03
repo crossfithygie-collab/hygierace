@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Échauffement et appel · Hygie Race 4</title>
+<meta name="theme-color" content="#1800AD">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800;1,900&family=Permanent+Marker&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="race4.css?v=4">
+<style>
+ body{overflow:hidden}
+ .nav,.foot,.logo-wrap,.frame{display:none}
+ .wrap{max-width:none;width:100%;padding:22px 34px 0}
+ .tete{display:flex;align-items:baseline;gap:16px;margin:0 0 12px}
+ .tete .titre{font-size:17px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;
+  opacity:.7}
+ .tete .heure{margin-left:auto;font-size:30px;font-weight:900;
+  font-variant-numeric:tabular-nums}
+ .carte{border:2px solid rgba(255,255,255,.22);border-radius:16px;padding:18px 22px;
+  margin:0 0 14px}
+ .carte.vedette{border-color:#FFD166;background:rgba(255,209,102,.08)}
+ .quoi{font-size:14px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;
+  color:#FFD166;margin:0 0 6px}
+ .carte:not(.vedette) .quoi{color:inherit;opacity:.6}
+ .ligne{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin:0 0 10px}
+ .vague{font-size:40px;font-weight:900;letter-spacing:-.02em;line-height:1}
+ .carte:not(.vedette) .vague{font-size:27px}
+ .div{font-size:19px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+ .carte:not(.vedette) .div{font-size:15px}
+ .horaires{display:flex;gap:26px;margin-left:auto;font-variant-numeric:tabular-nums}
+ .horaires div{text-align:right}
+ .horaires span{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;opacity:.6}
+ .horaires b{font-size:30px;font-weight:900;line-height:1.1}
+ .carte:not(.vedette) .horaires b{font-size:21px}
+ .eq{display:grid;grid-template-columns:repeat(3,1fr);gap:4px 26px}
+ .eq div{display:flex;gap:10px;align-items:baseline;padding:5px 0;
+  border-bottom:1px solid rgba(255,255,255,.1)}
+ .eq i{font-style:normal;font-weight:900;font-size:17px;opacity:.5;width:26px;flex:none}
+ .eq b{font-size:21px;font-weight:800;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap}
+ .eq small{display:block;font-size:13px;font-weight:400;opacity:.7}
+ .carte:not(.vedette) .eq b{font-size:16px}
+ .carte:not(.vedette) .eq small{display:none}
+ .fini{opacity:.45}
+ .rien{font-size:26px;font-weight:800;padding:40px 0;text-align:center;opacity:.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="tete"><span class="titre">Échauffement et appel</span>
+    <span class="heure" id="heure"></span></div>
+  <div id="tout"><p class="rien">Chargement du planning…</p></div>
+</div>
+
+<script>
+// L'ecran de la zone d'appel. Il repond a une seule question, celle que tout le
+// monde pose : « c'est quand qu'on s'echauffe ? ». La vague a venir est en
+// grand, avec ses equipes ; les suivantes defilent dessous.
+var vagues = [], suivante = 0;
+
+function mins(h){ var p = (h || '0:0').split(':'); return +p[0] * 60 + +p[1]; }
+function maintenant(){ var d = new Date(); return d.getHours() * 60 + d.getMinutes(); }
+function hhmm(h){ return (h || '').replace(':', 'h'); }
+function echappe(x){ return String(x == null ? '' : x)
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
+function horloge(){
+  var d = new Date();
+  document.getElementById('heure').textContent =
+    ('0' + d.getHours()).slice(-2) + 'h' + ('0' + d.getMinutes()).slice(-2);
+}
+
+// La vague « a venir », c'est la premiere qui n'est pas encore partie. Dix
+// minutes apres son depart elle laisse la place : plus personne n'a besoin
+// d'elle, et c'est la suivante qui doit s'echauffer.
+function aVenir(){
+  var m = maintenant();
+  for (var i = 0; i < vagues.length; i++){
+    if (m < mins(vagues[i].depart) + 10) return i;
+  }
+  return -1;
+}
+
+function equipes(v, vedette){
+  if (!(v.equipes || []).length) return '';
+  return '<div class="eq">' + v.equipes.map(function(e){
+    return '<div><i>' + e.lane + '</i><b>' + echappe(e.equipe)
+      + (vedette ? '<small>' + (e.athletes || []).map(echappe).join(' · ')
+                 + '</small>' : '') + '</b></div>';
+  }).join('') + '</div>';
+}
+
+function carte(v, vedette, quoi){
+  return '<div class="carte' + (vedette ? ' vedette' : '') + '">'
+    + '<p class="quoi">' + quoi + '</p>'
+    + '<div class="ligne"><span class="vague">Vague ' + v.n + '</span>'
+    + '<span class="div">' + echappe(v.division) + '</span>'
+    + '<div class="horaires">'
+    + '<div><span>Échauffement</span><b>' + hhmm(v.echauffement) + '</b></div>'
+    + '<div><span>Appel</span><b>' + hhmm(v.appel) + '</b></div>'
+    + '<div><span>Départ</span><b>' + hhmm(v.depart) + '</b></div>'
+    + '</div></div>' + equipes(v, vedette) + '</div>';
+}
+
+function peindre(){
+  var z = document.getElementById('tout');
+  if (!vagues.length){ z.innerHTML = '<p class="rien">Planning indisponible.</p>'; return; }
+  var i = aVenir();
+  if (i < 0){
+    z.innerHTML = '<p class="rien">Toutes les vagues sont parties. Bravo à tous ! 🎉</p>';
+    return;
+  }
+  var v = vagues[i], m = maintenant();
+  var quoi = m >= mins(v.appel) ? 'En appel, maintenant'
+           : m >= mins(v.echauffement) ? 'À l’échauffement, maintenant'
+           : 'La prochaine vague';
+  // Les autres vagues passent une par une sous la vedette : tout le monde
+  // finit par voir la sienne sans avoir a demander.
+  var restes = vagues.slice(i + 1);
+  var html = carte(v, true, quoi);
+  if (restes.length){
+    suivante = suivante % restes.length;
+    html += carte(restes[suivante], false, 'Ensuite');
+  }
+  z.innerHTML = html;
+}
+
+function tourner(){ suivante++; peindre(); }
+
+function charger(){
+  fetch('race4-vagues.json?t=' + Date.now())
+    .then(function(r){ return r.json(); })
+    .then(function(d){ vagues = d.vagues || []; peindre(); })
+    .catch(function(){
+      document.getElementById('tout').innerHTML =
+        '<p class="rien">Planning momentanément indisponible.</p>'; });
+}
+
+horloge();
+charger();
+setInterval(horloge, 20000);
+setInterval(peindre, 30000);       // l'heure avance, l'ecran suit
+setInterval(tourner, +(new URLSearchParams(location.search).get('secondes') || 12) * 1000);
+setInterval(charger, 300000);
+</script>
+</body>
+</html>

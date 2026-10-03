@@ -1,0 +1,393 @@
+{
+ "date": "dimanche 4 octobre 2026",
+ "vagues": [
+  {
+   "n": 1,
+   "division": "FF OPEN",
+   "echauffement": "07:35",
+   "appel": "07:55",
+   "depart": "08:00",
+   "fin": "09:20",
+   "equipes": [
+    {
+     "lane": 1,
+     "equipe": "GURLZ",
+     "athletes": [
+      "Margot Moreaux",
+      "Loridan Chloé"
+     ]
+    },
+    {
+     "lane": 2,
+     "equipe": "Dum’belles",
+     "athletes": [
+      "Priscilla Dourlens",
+      "Longuepee pascale"
+     ]
+    },
+    {
+     "lane": 3,
+     "equipe": "Wod else",
+     "athletes": [
+      "Mathilde Dubois",
+      "Belloy Cindy"
+     ]
+    },
+    {
+     "lane": 4,
+     "equipe": "BOSS LADIES",
+     "athletes": [
+      "Alice Lagleize",
+      "Margareth Badia"
+     ]
+    },
+    {
+     "lane": 5,
+     "equipe": "TEAM FEMINAFIT",
+     "athletes": [
+      "Amélie Lorek",
+      "Laureen Lepez"
+     ]
+    },
+    {
+     "lane": 6,
+     "equipe": "Les cœurs de bœuf",
+     "athletes": [
+      "Stéphanie Caby",
+      "Valentine Deleplace"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "division": "FF OPEN - FF PRO",
+   "echauffement": "08:20",
+   "appel": "08:40",
+   "depart": "08:45",
+   "fin": "10:05",
+   "equipes": [
+    {
+     "lane": 1,
+     "equipe": "Les aventurières",
+     "athletes": [
+      "Pauline Monnier",
+      "Eulalie Sissoeff"
+     ]
+    },
+    {
+     "lane": 2,
+     "equipe": "Marie & Sara",
+     "athletes": [
+      "Sara Jamaal",
+      "Marie Ruffino"
+     ]
+    },
+    {
+     "lane": 3,
+     "equipe": "WomanRiser",
+     "athletes": [
+      "Julie Jules",
+      "Godart Marine"
+     ]
+    },
+    {
+     "lane": 4,
+     "equipe": "Ah… fallait courir ?😅",
+     "athletes": [
+      "Sandrine Guetiere",
+      "Zucchiatti Julie"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "division": "HF MIXTE",
+   "echauffement": "09:00",
+   "appel": "09:20",
+   "depart": "09:25",
+   "fin": "10:45",
+   "equipes": [
+    {
+     "lane": 1,
+     "equipe": "Qui a inscrit qui?",
+     "athletes": [
+      "Tant Coraline",
+      "Baillier Celien"
+     ]
+    },
+    {
+     "lane": 2,
+     "equipe": "GuillauTine",
+     "athletes": [
+      "Justine Rigbourg",
+      "Carpentier Guillaume"
+     ]
+    },
+    {
+     "lane": 3,
+     "equipe": "Team communication",
+     "athletes": [
+      "Cédric Daso Carron",
+      "Louise Jaunet"
+     ]
+    },
+    {
+     "lane": 4,
+     "equipe": "Les zinzins",
+     "athletes": [
+      "Pauline Kolodziejczak",
+      "Dusautois Vincent"
+     ]
+    },
+    {
+     "lane": 5,
+     "equipe": "Les Champins",
+     "athletes": [
+      "TARLOWSKI Manon",
+      "DANEL Victor"
+     ]
+    },
+    {
+     "lane": 6,
+     "equipe": "Faites Comme Si On Était Bons",
+     "athletes": [
+      "Samuel Urbano-garcia",
+      "Nicolas Faustine"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "division": "HF MIXTE",
+   "echauffement": "09:45",
+   "appel": "10:05",
+   "depart": "10:10",
+   "fin": "11:30",
+   "equipes": [
+    {
+     "lane": 1,
+     "equipe": "Team Madma",
+     "athletes": [
+      "Anthony Marey",
+      "Marine plateel"
+     ]
+    },
+    {
+     "lane": 2,
+     "equipe": "Zel & Kev",
+     "athletes": [
+      "Zely Grimonpont",
+      "Kevin BOURY"
+     ]
+    },
+    {
+     "lane": 3,
+     "equipe": "Les chats noirs",
+     "athletes": [
+      "Elise Bailly",
+      "Briant Thomas"
+     ]
+    },
+    {
+     "lane": 4,
+     "equipe": "La ramasse",
+     "athletes": [
+      "Enoal Peinte",
+      "Cuvellier Marie"
+     ]
+    },
+    {
+     "lane": 5,
+     "equipe": "Le coach et la bête",
+     "athletes": [
+      "Lucie senechal",
+      "Galai Younesse"
+     ]
+    },
+    {
+     "lane": 6,
+     "equipe": "QAKC",
+     "athletes": [
+      "Sonia Colard",
+      "Dereumaux quentin"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "division": "HF MIXTE - Homme Open",
+   "echauffement": "10:25",
+   "appel": "10:45",
+   "depart": "10:50",
+   "fin": "12:10",
+   "equipes": [
+    {
+     "lane": 1,
+     "equipe": "La belle et la bête",
+     "athletes": [
+      "Alison Dapvril",
+      "RUOLT Ulrich"
+     ]
+    },
+    {
+     "lane": 2,
+     "equipe": "Les pénouilles",
+     "athletes": [
+      "Carole Barre",
+      "Bonnet thomas"
+     ]
+    },
+    {
+     "lane": 3,
+     "equipe": "Les Hobbits Joufflus",
+     "athletes": [
+      "Neumann Christophe",
+      "Neumann Mélanie"
+     ]
+    },
+    {
+     "lane": 4,
+     "equipe": "je refile les burpees à ma partenaire 2",
+     "athletes": [
+      "Mailer Thomas",
+      "Boldoduck manon"
+     ]
+    },
+    {
+     "lane": 5,
+     "equipe": "Felicien MAHIET",
+     "athletes": [
+      "Felicien MAHIET"
+     ]
+    },
+    {
+     "lane": 6,
+     "equipe": "Jean-Baptiste LOMENECH",
+     "athletes": [
+      "Jean-Baptiste LOMENECH"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "division": "HH OPEN",
+   "echauffement": "11:10",
+   "appel": "11:30",
+   "depart": "11:35",
+   "fin": "12:55",
+   "equipes": [
+    {
+     "lane": 1,
+     "equipe": "Il est (enfin) majeur",
+     "athletes": [
+      "Magnolia Antoine",
+      "Destrebecq Gaël"
+     ]
+    },
+    {
+     "lane": 2,
+     "equipe": "Tendinites & Co",
+     "athletes": [
+      "Morgan Verraes",
+      "Degand Cedric"
+     ]
+    },
+    {
+     "lane": 3,
+     "equipe": "Trop grands pour toi",
+     "athletes": [
+      "Seys Romain",
+      "Deldalle Clément"
+     ]
+    },
+    {
+     "lane": 4,
+     "equipe": "Jptp",
+     "athletes": [
+      "Baptiste Coolens",
+      "Hennart Dimitry"
+     ]
+    },
+    {
+     "lane": 5,
+     "equipe": "Casseurs Flotteurs",
+     "athletes": [
+      "Derry Badi",
+      "Derhille"
+     ]
+    },
+    {
+     "lane": 6,
+     "equipe": "Les Faux-ssoyeurs",
+     "athletes": [
+      "Boulet Armand",
+      "Capelle Pierre"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "division": "HH PRO",
+   "echauffement": "11:50",
+   "appel": "12:10",
+   "depart": "12:15",
+   "fin": "13:35",
+   "equipes": [
+    {
+     "lane": 1,
+     "equipe": "MedAlex",
+     "athletes": [
+      "Mehdi Bracq",
+      "Ledent Alexandre"
+     ]
+    },
+    {
+     "lane": 2,
+     "equipe": "Les Tuches, le retour du retour !!",
+     "athletes": [
+      "Olivier Willem",
+      "Louage Cédric"
+     ]
+    },
+    {
+     "lane": 3,
+     "equipe": "Ne m'attends pas, je te rejoins.",
+     "athletes": [
+      "Jérémy Deligny",
+      "Morgan Dhaussy"
+     ]
+    },
+    {
+     "lane": 4,
+     "equipe": "PR ou PLS",
+     "athletes": [
+      "JOZWIAK Baptuste",
+      "DELEFORTRIE Morgan"
+     ]
+    },
+    {
+     "lane": 5,
+     "equipe": "B. Pitt & T. Cruise (enfin, Bernard Pitt & Thierry Cruise...les vrais avaient des choses plus intéressantes à faire que des burpees et des 200m. Nous, visiblement, on avait du temps à perdre).",
+     "athletes": [
+      "Maxime Morelle",
+      "Nicolas Barbet"
+     ]
+    },
+    {
+     "lane": 6,
+     "equipe": "Fléo",
+     "athletes": [
+      "Florian Carette",
+      "Léo de beaurepaire"
+     ]
+    }
+   ]
+  }
+ ]
+}
