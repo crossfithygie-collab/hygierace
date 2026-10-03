@@ -267,7 +267,11 @@ setInterval(charger, 60000);   // le spectateur n'a rien à rafraîchir
       }
       // On sait maintenant combien de pages il faut : on repartit les equipes
       // a parts egales, pour ne pas finir sur une page a une seule ligne.
-      var nb = lots.length, taille = Math.ceil(lignes.length / nb), i = 0;
+      // On equilibre les pages, mais jamais en dessous du minimum voulu :
+      // mieux vaut une derniere page courte que des ecrans a moitie vides.
+      var nb = lots.length;
+      var taille = Math.max(Math.min(vise, lignes.length),
+                            Math.ceil(lignes.length / nb)), i = 0;
       lots = [];
       while (i < lignes.length){
         lots.push([i, Math.min(lignes.length, i + taille)]);
