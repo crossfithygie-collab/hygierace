@@ -70,6 +70,18 @@
 // grand, avec ses equipes ; les suivantes defilent dessous.
 var vagues = [], suivante = 0, vedetteVue = null;
 
+// L'horloge d'un Chromecast n'est pas fiable : elle derive, et sur certains
+// modeles elle est fausse de plusieurs minutes. On prend l'heure du serveur,
+// lue dans l'en-tete Date de la reponse, et on garde l'ecart.
+var ECART = 0;
+function quand(){ return new Date(Date.now() + ECART); }
+function reglerHorloge(reponse){
+  var d = reponse && reponse.headers && reponse.headers.get('Date');
+  if (!d) return;
+  var t = Date.parse(d);
+  if (!isNaN(t)) ECART = t - Date.now();
+}
+
 function mins(h){ var p = (h || '0:0').split(':'); return +p[0] * 60 + +p[1]; }
 
 // ?heure=07:30 fait croire a l'ecran qu'il est 7h30 : c'est la seule facon de
@@ -78,7 +90,7 @@ function mins(h){ var p = (h || '0:0').split(':'); return +p[0] * 60 + +p[1]; }
 var FAUSSE = new URLSearchParams(location.search).get('heure');
 function maintenant(){
   if (FAUSSE) return mins(FAUSSE);
-  var d = new Date(); return d.getHours() * 60 + d.getMinutes();
+  var d = quand(); return d.getHours() * 60 + d.getMinutes();
 }
 function hhmm(h){ return (h || '').replace(':', 'h'); }
 function echappe(x){ return String(x == null ? '' : x)
@@ -96,7 +108,7 @@ function horloge(){
     document.getElementById('heure').textContent = FAUSSE.replace(':', 'h');
     return;
   }
-  var d = new Date();
+  var d = quand();
   document.getElementById('heure').textContent =
     ('0' + d.getHours()).slice(-2) + 'h' + ('0' + d.getMinutes()).slice(-2);
 }
@@ -194,8 +206,8 @@ function tourner(){ suivante++; peindre(); }
 
 function charger(){
   fetch('race4-vagues.json?t=' + Date.now())
-    .then(function(r){ return r.json(); })
-    .then(function(d){ vagues = d.vagues || []; peindre(); })
+    .then(function(r){ reglerHorloge(r); return r.json(); })
+    .then(function(d){ vagues = d.vagues || []; horloge(); peindre(); })
     .catch(function(){
       document.getElementById('tout').innerHTML =
         '<p class="rien">Planning momentanément indisponible.</p>'; });
@@ -205,6 +217,10 @@ horloge();
 charger();
 window.addEventListener('resize', grossir);
 setInterval(horloge, 20000);
+setInterval(function(){
+  fetch('race4-vagues.json?t=' + Date.now(), {method: 'HEAD'})
+    .then(reglerHorloge).catch(function(){});
+}, 600000);
 setInterval(peindre, 30000);       // l'heure avance, l'ecran suit
 setInterval(tourner, +(new URLSearchParams(location.search).get('secondes') || 12) * 1000);
 setInterval(charger, 300000);
