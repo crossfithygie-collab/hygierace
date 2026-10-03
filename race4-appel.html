@@ -69,7 +69,15 @@
 var vagues = [], suivante = 0, vedetteVue = null;
 
 function mins(h){ var p = (h || '0:0').split(':'); return +p[0] * 60 + +p[1]; }
-function maintenant(){ var d = new Date(); return d.getHours() * 60 + d.getMinutes(); }
+
+// ?heure=07:30 fait croire a l'ecran qu'il est 7h30 : c'est la seule facon de
+// repeter la journee la veille, sur la vraie television. Sans ce parametre,
+// l'heure est celle de la pendule.
+var FAUSSE = new URLSearchParams(location.search).get('heure');
+function maintenant(){
+  if (FAUSSE) return mins(FAUSSE);
+  var d = new Date(); return d.getHours() * 60 + d.getMinutes();
+}
 function hhmm(h){ return (h || '').replace(':', 'h'); }
 function echappe(x){ return String(x == null ? '' : x)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
@@ -82,6 +90,10 @@ function court(n, max){
 }
 
 function horloge(){
+  if (FAUSSE){
+    document.getElementById('heure').textContent = FAUSSE.replace(':', 'h');
+    return;
+  }
   var d = new Date();
   document.getElementById('heure').textContent =
     ('0' + d.getHours()).slice(-2) + 'h' + ('0' + d.getMinutes()).slice(-2);
