@@ -15,44 +15,46 @@
     l'image, pas poser une marge. */
  .wrap{max-width:none;width:100%;padding:22px 34px 0;
   transform:scale(.93);transform-origin:top center}
+ .carte{padding:calc(18px * var(--f,1)) calc(22px * var(--f,1))}
+ .eq div{padding:calc(5px * var(--f,1)) 0}
  .tete{display:flex;align-items:baseline;gap:16px;margin:0 0 12px}
- .tete .titre{font-size:17px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;
+ .tete .titre{font-size:calc(17px * var(--f,1));font-weight:900;letter-spacing:.18em;text-transform:uppercase;
   opacity:.7}
- .tete .heure{margin-left:auto;font-size:30px;font-weight:900;
+ .tete .heure{margin-left:auto;font-size:calc(30px * var(--f,1));font-weight:900;
   font-variant-numeric:tabular-nums}
  .carte{border:2px solid rgba(255,255,255,.22);border-radius:16px;padding:18px 22px;
   margin:0 0 14px}
  .carte.vedette{border-color:#FFD166;background:rgba(255,209,102,.08)}
- .quoi{font-size:14px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;
+ .quoi{font-size:calc(14px * var(--f,1));font-weight:900;letter-spacing:.16em;text-transform:uppercase;
   color:#FFD166;margin:0 0 6px}
  .carte:not(.vedette) .quoi{color:inherit;opacity:.6}
  .ligne{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin:0 0 10px}
- .vague{font-size:40px;font-weight:900;letter-spacing:-.02em;line-height:1}
- .carte:not(.vedette) .vague{font-size:27px}
- .div{font-size:19px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
- .carte:not(.vedette) .div{font-size:15px}
+ .vague{font-size:calc(40px * var(--f,1));font-weight:900;letter-spacing:-.02em;line-height:1}
+ .carte:not(.vedette) .vague{font-size:calc(27px * var(--f,1))}
+ .div{font-size:calc(19px * var(--f,1));font-weight:800;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+ .carte:not(.vedette) .div{font-size:calc(15px * var(--f,1))}
  .horaires{display:flex;gap:26px;margin-left:auto;font-variant-numeric:tabular-nums}
  .horaires div{text-align:right}
- .horaires span{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;
+ .horaires span{display:block;font-size:calc(11px * var(--f,1));font-weight:800;letter-spacing:.1em;
   text-transform:uppercase;opacity:.6}
- .horaires b{font-size:30px;font-weight:900;line-height:1.1}
- .carte:not(.vedette) .horaires b{font-size:21px}
+ .horaires b{font-size:calc(30px * var(--f,1));font-weight:900;line-height:1.1}
+ .carte:not(.vedette) .horaires b{font-size:calc(21px * var(--f,1))}
  /* minmax(0,1fr) : sans ca, une colonne de grille s'elargit au nom le plus
     long au lieu de le couper, et le cadre deborde de l'ecran. */
  .eq{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 26px}
  .eq div{display:flex;gap:10px;align-items:baseline;padding:5px 0;min-width:0;
   border-bottom:1px solid rgba(255,255,255,.1)}
- .eq i{font-style:normal;font-weight:900;font-size:17px;opacity:.5;width:26px;flex:none}
- .eq b{font-size:21px;font-weight:800;overflow:hidden;text-overflow:ellipsis;
+ .eq i{font-style:normal;font-weight:900;font-size:calc(17px * var(--f,1));opacity:.5;width:26px;flex:none}
+ .eq b{font-size:calc(21px * var(--f,1));font-weight:800;overflow:hidden;text-overflow:ellipsis;
   white-space:nowrap;min-width:0;flex:1}
- .eq small{display:block;font-size:13px;font-weight:400;opacity:.7;
+ .eq small{display:block;font-size:calc(13px * var(--f,1));font-weight:400;opacity:.7;
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
  .ligne{min-width:0}
  .div{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:46%}
- .carte:not(.vedette) .eq b{font-size:16px}
+ .carte:not(.vedette) .eq b{font-size:calc(16px * var(--f,1))}
  .carte:not(.vedette) .eq small{display:none}
  .fini{opacity:.45}
- .rien{font-size:26px;font-weight:800;padding:40px 0;text-align:center;opacity:.8}
+ .rien{font-size:calc(26px * var(--f,1));font-weight:800;padding:40px 0;text-align:center;opacity:.8}
 </style>
 </head>
 <body>
@@ -138,6 +140,7 @@ function peindre(){
   var i = aVenir();
   if (i < 0){
     z.innerHTML = '<p class="rien">Toutes les vagues sont parties. Bravo à tous ! 🎉</p>';
+    grossir();
     return;
   }
   // La vedette ne bouge pas tant que sa vague n'est pas partie. Quand elle
@@ -156,6 +159,35 @@ function peindre(){
     html += carte(restes[suivante], false, 'Ensuite');
   }
   z.innerHTML = html;
+  grossir();
+}
+
+// La police grossit jusqu'a remplir l'ecran, et pas un pixel de plus. On
+// cherche par moities : c'est immediat et ca marche quelle que soit la TV.
+function grossir(){
+  var r = document.documentElement, w = document.querySelector('.wrap');
+  function deborde(){
+    return w.scrollHeight * 0.93 > window.innerHeight - 8
+        || w.scrollWidth > w.clientWidth + 1;
+  }
+  r.style.setProperty('--f', 1);
+  if (deborde()){
+    var bas = .5, haut = 1;
+    for (var i = 0; i < 16; i++){
+      var m = (bas + haut) / 2;
+      r.style.setProperty('--f', m);
+      if (deborde()) haut = m; else bas = m;
+    }
+    r.style.setProperty('--f', bas);
+    return;
+  }
+  var b2 = 1, h2 = 3;
+  for (var j = 0; j < 16; j++){
+    var m2 = (b2 + h2) / 2;
+    r.style.setProperty('--f', m2);
+    if (deborde()) h2 = m2; else b2 = m2;
+  }
+  r.style.setProperty('--f', b2);
 }
 
 function tourner(){ suivante++; peindre(); }
@@ -171,6 +203,7 @@ function charger(){
 
 horloge();
 charger();
+window.addEventListener('resize', grossir);
 setInterval(horloge, 20000);
 setInterval(peindre, 30000);       // l'heure avance, l'ecran suit
 setInterval(tourner, +(new URLSearchParams(location.search).get('secondes') || 12) * 1000);
