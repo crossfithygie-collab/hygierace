@@ -35,6 +35,40 @@
  .lg td.t small{display:block;font-size:11px;font-weight:600;opacity:.7}
  .lg tr.attente td{opacity:.5}
  .vide{font-size:14px;opacity:.7;padding:10px 0}
+
+ /* Mode televiseur : ?tv=1. On vise un ecran a trois metres, pas un telephone.
+    Les Chromecast rognent les bords, et contre ca il faut reduire l'image, pas
+    poser une marge : d'ou le scale sur la page entiere. */
+ body.tv{overflow:hidden}
+ body.tv .nav,body.tv .foot,body.tv .barre,body.tv .logo-wrap{display:none}
+ body.tv .wrap{transform:scale(.93);transform-origin:top center;
+   max-width:none;width:100%;padding:18px 34px 0}
+ body.tv .hero{margin:0 0 10px;display:flex;align-items:baseline;gap:18px}
+ body.tv .hero h1{font-size:46px;margin:0}
+ body.tv .stamp{font-size:19px}
+ body.tv .maj{font-size:17px;margin:0 0 14px;opacity:.75}
+ body.tv #classement{display:grid;grid-template-columns:1fr 1fr;gap:0 44px;
+   align-content:start}
+ body.tv .cat{margin:0 0 18px;break-inside:avoid}
+ body.tv .cat h2{font-size:21px;letter-spacing:.14em;margin:0 0 6px;padding-bottom:6px}
+ body.tv .lg{font-size:24px}
+ body.tv .lg th{display:none}
+ body.tv .lg td{padding:9px 6px}
+ body.tv .lg td.r{width:52px;font-size:28px}
+ body.tv .lg td.e{font-size:25px}
+ body.tv .lg td.e span{font-size:17px;margin-top:1px}
+ body.tv .lg td.t{font-size:27px;width:132px}
+ body.tv .lg td.t small{font-size:15px}
+ body.tv .vide{font-size:19px}
+ /* Une seule categorie a l'ecran quand elles defilent : plein cadre. */
+ body.tv.solo #classement{grid-template-columns:1fr}
+ body.tv.solo .cat h2{font-size:30px}
+ body.tv.solo .lg{font-size:34px}
+ body.tv.solo .lg td.r{width:72px;font-size:40px}
+ body.tv.solo .lg td.e{font-size:35px}
+ body.tv.solo .lg td.e span{font-size:22px}
+ body.tv.solo .lg td.t{font-size:38px;width:190px}
+ body.tv.solo .lg td.t small{font-size:19px}
 </style>
 </head>
 <body>
@@ -168,6 +202,31 @@ function charger(){
 }
 charger();
 setInterval(charger, 60000);   // le spectateur n'a rien à rafraîchir
+
+// ── le mode televiseur ───────────────────────────────────────────────────────
+// ?tv=1 : grand, sans navigation, sur deux colonnes. ?tv=1&defile=1 : une
+// categorie a la fois, qui change toute seule. Personne ne touche a rien.
+(function(){
+  var q = new URLSearchParams(location.search);
+  if (q.get('tv') !== '1') return;
+  document.body.classList.add('tv');
+  var defile = q.get('defile') === '1';
+  if (!defile) return;
+  document.body.classList.add('solo');
+  var rang = 0;
+  function tourner(){
+    var cats = document.querySelectorAll('#classement .cat');
+    if (!cats.length) return;
+    rang = rang % cats.length;
+    cats.forEach(function(c, i){ c.style.display = i === rang ? '' : 'none'; });
+    rang++;
+  }
+  // Le classement se redessine tout seul : on remet la rotation en place apres.
+  var peindreOrig = peindre;
+  peindre = function(){ peindreOrig(); tourner(); };
+  tourner();
+  setInterval(tourner, +(q.get('secondes') || 12) * 1000);
+})();
 </script>
 </body>
 </html>
