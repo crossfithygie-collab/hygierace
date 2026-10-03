@@ -47,8 +47,7 @@
    max-width:none;width:100%;padding:26px 34px 0}
  body.tv .maj{font-size:15px;margin:0 0 12px;opacity:.55;text-align:left}
  body.tv .cat h2,body.tv .lg td.e{text-align:left}
- /* Le cadre s'ajuste a l'ecran : voir ajusterTV(). */
- body.tv #classement{transform-origin:top left}
+
  body.tv #classement{display:grid;grid-template-columns:1fr 1fr;gap:0 44px;
    align-content:start}
  body.tv .cat{margin:0 0 18px;break-inside:avoid}
@@ -216,32 +215,78 @@ setInterval(charger, 60000);   // le spectateur n'a rien à rafraîchir
   // voit toutes passer. ?defile=0 remet les deux colonnes fixes.
   if (q.get('defile') === '0') return;
   document.body.classList.add('solo');
-  var rang = 0;
-  function ajusterTV(){
-    // Une categorie remplit l'ecran sans jamais le deborder : on mesure, et on
-    // reduit l'image si besoin. Sur un televiseur, une ligne coupee en bas est
-    // pire qu'un texte un peu plus petit.
+  var page = 0, pages = [];
+
+  function placeDispo(){
     var z = document.getElementById('classement');
-    z.style.transform = 'none';
-    var dispo = window.innerHeight - z.getBoundingClientRect().top - 24;
-    var h = z.scrollHeight;
-    var k = h > dispo && h > 0 ? Math.max(.45, dispo / h) : 1;
-    z.style.transform = k < 1 ? 'scale(' + k.toFixed(3) + ')' : 'none';
-    z.style.width = k < 1 ? (100 / k).toFixed(2) + '%' : '';
+    return window.innerHeight - z.getBoundingClientRect().top - 26;
   }
-  function tourner(){
-    var cats = document.querySelectorAll('#classement .cat');
-    if (!cats.length) return;
-    rang = rang % cats.length;
-    cats.forEach(function(c, i){ c.style.display = i === rang ? '' : 'none'; });
-    rang++;
-    ajusterTV();
+
+  // Une categorie trop longue ne se tasse pas : elle se coupe en plusieurs
+  // pages. On mesure les lignes a leur vraie taille, puis on remplit page par
+  // page tant que ca rentre. Mieux vaut deux ecrans lisibles qu'un illisible.
+  function decouper(){
+    var cats = [].slice.call(document.querySelectorAll('#classement .cat'));
+    if (!cats.length) return [];
+    var dispo = placeDispo(), out = [];
+    cats.forEach(function(c, ic){
+      c.style.display = '';
+      var lignes = [].slice.call(c.querySelectorAll('tbody tr'));
+      lignes.forEach(function(l){ l.style.display = ''; });
+      if (!lignes.length){ out.push({cat: ic, de: 0, a: 0, n: 1, sur: 1}); return; }
+      var tete = c.getBoundingClientRect().height
+               - lignes.reduce(function(h, l){
+                   return h + l.getBoundingClientRect().height; }, 0);
+      var lots = [], haut = tete, debut = 0;
+      lignes.forEach(function(l, i){
+        var h = l.getBoundingClientRect().height;
+        if (haut + h > dispo && i > debut){
+          lots.push([debut, i]); debut = i; haut = tete;
+        }
+        haut += h;
+      });
+      lots.push([debut, lignes.length]);
+      lots.forEach(function(x, i){
+        out.push({cat: ic, de: x[0], a: x[1], n: i + 1, sur: lots.length}); });
+    });
+    return out;
   }
-  window.addEventListener('resize', ajusterTV);
+
+  function montrer(){
+    var cats = [].slice.call(document.querySelectorAll('#classement .cat'));
+    if (!pages.length || !cats.length) return;
+    page = page % pages.length;
+    var p = pages[page];
+    cats.forEach(function(c, i){ c.style.display = i === p.cat ? '' : 'none'; });
+    var c = cats[p.cat];
+    [].slice.call(c.querySelectorAll('tbody tr')).forEach(function(l, i){
+      l.style.display = (i >= p.de && i < p.a) ? '' : 'none';
+    });
+    var h2 = c.querySelector('h2');
+    if (h2){
+      var nom = h2.dataset.nom || (h2.dataset.nom = h2.textContent);
+      h2.textContent = p.sur > 1 ? nom + '  ' + p.n + ' / ' + p.sur : nom;
+    }
+    page++;
+  }
+
+  function tourner(){ montrer(); }
+
+  function recalculer(){
+    var garde = pages[(page - 1 + Math.max(1, pages.length)) % Math.max(1, pages.length)];
+    pages = decouper();
+    if (garde){
+      var i = pages.findIndex(function(x){
+        return x.cat === garde.cat && x.de === garde.de; });
+      page = i >= 0 ? i : 0;
+    } else { page = 0; }
+    montrer();
+  }
+  window.addEventListener('resize', recalculer);
   // Le classement se redessine tout seul : on remet la rotation en place apres.
   var peindreOrig = peindre;
-  peindre = function(){ peindreOrig(); tourner(); };
-  tourner();
+  peindre = function(){ peindreOrig(); recalculer(); };
+  recalculer();
   setInterval(tourner, +(q.get('secondes') || 15) * 1000);
 })();
 </script>
