@@ -212,8 +212,9 @@ setInterval(charger, 60000);   // le spectateur n'a rien à rafraîchir
   var q = new URLSearchParams(location.search);
   if (q.get('tv') !== '1') return;
   document.body.classList.add('tv');
-  var defile = q.get('defile') === '1';
-  if (!defile) return;
+  // Sur un televiseur, une categorie par page : lisible de loin, et on les
+  // voit toutes passer. ?defile=0 remet les deux colonnes fixes.
+  if (q.get('defile') === '0') return;
   document.body.classList.add('solo');
   var rang = 0;
   function ajusterTV(){
@@ -241,7 +242,7 @@ setInterval(charger, 60000);   // le spectateur n'a rien à rafraîchir
   var peindreOrig = peindre;
   peindre = function(){ peindreOrig(); tourner(); };
   tourner();
-  setInterval(tourner, +(q.get('secondes') || 12) * 1000);
+  setInterval(tourner, +(q.get('secondes') || 15) * 1000);
 })();
 </script>
 </body>
