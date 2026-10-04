@@ -20,6 +20,8 @@
  .tete{display:flex;align-items:baseline;gap:16px;margin:0 0 12px}
  .tete .titre{font-size:calc(17px * var(--f,1));font-weight:900;letter-spacing:.18em;text-transform:uppercase;
   opacity:.7}
+ .tete{align-items:center}
+ .tete .logo-tv{height:calc(64px * var(--f,1));width:auto;display:block;flex:none}
  .tete .heure{margin-left:auto;font-size:calc(30px * var(--f,1));font-weight:900;
   font-variant-numeric:tabular-nums}
  .carte{border:2px solid rgba(255,255,255,.22);border-radius:16px;padding:18px 22px;
@@ -59,7 +61,7 @@
 </head>
 <body>
 <div class="wrap">
-  <div class="tete"><span class="titre">Échauffement et appel</span>
+  <div class="tete"><img class="logo-tv" src="race4-logo.png" alt="Hygie Race 4"><span class="titre">Échauffement et appel</span>
     <span class="heure" id="heure"></span></div>
   <div id="tout"><p class="rien">Chargement du planning…</p></div>
 </div>
