@@ -1,5 +1,5 @@
 {
- "maj": "2026-10-04T11:34:45+02:00",
+ "maj": "2026-10-04T11:42:14+02:00",
  "resultats": [
   {
    "equipe": "GURLZ",
@@ -349,7 +349,7 @@
    "heat": 5,
    "lane": 5,
    "temps": null,
-   "manque": null
+   "manque": 500
   },
   {
    "equipe": "Jean-Baptiste LOMENECH",
