@@ -113,13 +113,12 @@ function horloge(){
     ('0' + d.getHours()).slice(-2) + 'h' + ('0' + d.getMinutes()).slice(-2);
 }
 
-// La vague « a venir », c'est la premiere qui n'est pas encore partie. Dix
-// minutes apres son depart elle laisse la place : plus personne n'a besoin
-// d'elle, et c'est la suivante qui doit s'echauffer.
+// La vague « a venir », c'est la premiere qui n'est pas encore partie. Des
+// son depart elle laisse la place : c'est la suivante qui doit s'echauffer.
 function aVenir(){
   var m = maintenant();
   for (var i = 0; i < vagues.length; i++){
-    if (m < mins(vagues[i].depart) + 10) return i;
+    if (m < mins(vagues[i].depart)) return i;
   }
   return -1;
 }
