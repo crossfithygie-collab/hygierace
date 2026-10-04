@@ -1,5 +1,5 @@
 {
- "maj": "2026-10-04T13:22:57+02:00",
+ "maj": "2026-10-04T13:23:07+02:00",
  "resultats": [
   {
    "equipe": "GURLZ",
@@ -490,7 +490,7 @@
    "categorie": "HH PRO",
    "heat": 7,
    "lane": 4,
-   "temps": null,
+   "temps": "53:16",
    "manque": null
   },
   {
