@@ -1,5 +1,5 @@
 {
- "maj": "2026-10-04T11:20:45+02:00",
+ "maj": "2026-10-04T11:34:45+02:00",
  "resultats": [
   {
    "equipe": "GURLZ",
@@ -259,7 +259,7 @@
    "heat": 4,
    "lane": 4,
    "temps": null,
-   "manque": null
+   "manque": 21
   },
   {
    "equipe": "Le coach et la bête",
