@@ -1,5 +1,5 @@
 {
- "maj": "2026-10-04T13:23:07+02:00",
+ "maj": "2026-10-04T13:24:20+02:00",
  "resultats": [
   {
    "equipe": "GURLZ",
@@ -503,7 +503,7 @@
    "categorie": "HH PRO",
    "heat": 7,
    "lane": 5,
-   "temps": null,
+   "temps": "67:00",
    "nom_complet": "B. Pitt & T. Cruise (enfin, Bernard Pitt & Thierry Cruise...les vrais avaient des choses plus intéressantes à faire que des burpees et des 200m. Nous, visiblement, on avait du temps à perdre).",
    "manque": null
   },
