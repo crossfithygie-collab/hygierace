@@ -1,5 +1,5 @@
 {
- "maj": "2026-10-04T09:40:51+02:00",
+ "maj": "2026-10-04T09:41:05+02:00",
  "resultats": [
   {
    "equipe": "GURLZ",
@@ -11,7 +11,7 @@
    "categorie": "FF OPEN",
    "heat": 1,
    "lane": 1,
-   "temps": null,
+   "temps": "79:47",
    "manque": null
   },
   {
