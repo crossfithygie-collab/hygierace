@@ -26,7 +26,9 @@
  .hero h1,h1{font-size:clamp(28px,9.6vw,76px);white-space:nowrap}
  /* tableau a largeurs fixes : on donne la largeur au premier rang (les en-tetes) */
  .lg th:first-child{width:38px} .lg th:last-child{width:92px;text-align:right}
- .lg td.e{text-align:left}
+ .lg td.e{text-align:left;overflow:hidden}
+ .lg td.e span{white-space:normal}
+ .lg td.t small{white-space:normal;line-height:1.15}
  @media (max-width:480px){
   .lg{font-size:14px}
   .lg td{padding:9px 5px}
