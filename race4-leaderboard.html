@@ -24,11 +24,15 @@
  .lg{width:100%;min-width:0;table-layout:fixed;border-collapse:collapse;font-size:15px}
  /* race4.css impose min-width:472px a tous les tableaux : ici on tient dans l'ecran. */
  .hero h1,h1{font-size:clamp(28px,9.6vw,76px);white-space:nowrap}
+ /* tableau a largeurs fixes : on donne la largeur au premier rang (les en-tetes) */
+ .lg th:first-child{width:38px} .lg th:last-child{width:92px;text-align:right}
+ .lg td.e{text-align:left}
  @media (max-width:480px){
   .lg{font-size:14px}
   .lg td{padding:9px 5px}
-  .lg td.r{width:30px;font-size:17px}
-  .lg td.t{width:78px;font-size:15px}
+  .lg td.r,.lg th:first-child{width:30px;font-size:17px}
+  .lg td.t,.lg th:last-child{width:80px}
+  .lg td.t{font-size:15px}
   .lg td.t small{font-size:10px}
   .lg th:last-child{text-align:right}
  }
