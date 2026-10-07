@@ -27,9 +27,10 @@
  .vignette img.ok{opacity:1}
  .vignette:hover img{transform:scale(1.04)}
  .vignette:focus-visible{outline:3px solid #fff;outline-offset:2px}
- .vignette .dl{position:absolute;right:6px;bottom:6px;width:34px;height:34px;border-radius:50%;
-  display:grid;place-items:center;background:rgba(24,0,173,.82);border:1.5px solid rgba(255,255,255,.6);color:#fff}
- .vignette .dl svg{width:16px;height:16px}
+ .vignette .dl{position:absolute;right:6px;bottom:6px;width:26px;height:26px;border-radius:50%;
+  display:grid;place-items:center;background:rgba(11,6,64,.45);color:rgba(255,255,255,.85);
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+ .vignette .dl svg{width:13px;height:13px}
 
  .plus{display:block;margin:26px auto 0;font-family:inherit;font-weight:900;font-size:12px;letter-spacing:1.5px;
   text-transform:uppercase;color:var(--blue);background:#fff;border:0;border-radius:99px;padding:14px 26px;cursor:pointer}
@@ -45,21 +46,29 @@
   display:grid;place-items:center;cursor:pointer;flex:none}
  .rond svg{width:20px;height:20px}
  .rond:focus-visible,.telecharger:focus-visible{outline:3px solid #fff;outline-offset:2px}
- .scene{flex:1;min-height:0;position:relative;display:flex;align-items:center;justify-content:center;touch-action:pan-y}
- .scene img{max-width:100%;max-height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none;transition:opacity .2s}
- .scene img.charge{opacity:.35}
- .fleche{position:absolute;top:50%;transform:translateY(-50%);background:rgba(24,0,173,.6)}
+ /* Trois diapos (précédente, courante, suivante) qui glissent ensemble et suivent le doigt. */
+ .scene{flex:1;min-height:0;position:relative;overflow:hidden;touch-action:pan-y}
+ .diapo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;will-change:transform,opacity}
+ .diapo img{max-width:100%;max-height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none;
+  opacity:0;transition:opacity .35s ease}
+ .diapo img.ok{opacity:1}
+ .vis:not([hidden]){animation:apparait .28s ease-out}
+ .vis.ouverture .diapo.centre img.ok{animation:zoome .36s cubic-bezier(.22,.8,.24,1)}
+ @keyframes apparait{from{opacity:0}}
+ @keyframes zoome{from{transform:scale(.94)}}
+ .fleche{position:absolute;z-index:2;top:50%;transform:translateY(-50%);background:rgba(24,0,173,.6)}
  .fleche.g{left:12px} .fleche.d{right:12px}
  @media (hover:none){.fleche{display:none}}
  .vis-bas{padding:14px 16px 18px;display:flex;flex-direction:column;align-items:center;gap:8px}
- .telecharger{display:inline-flex;align-items:center;gap:10px;font-family:inherit;font-weight:900;font-size:14px;
-  letter-spacing:1px;text-transform:uppercase;color:var(--blue);background:#fff;border:0;border-radius:99px;
-  padding:15px 28px;cursor:pointer;min-width:240px;justify-content:center}
- .telecharger svg{width:18px;height:18px}
- .telecharger[disabled]{opacity:.7;cursor:wait}
- .astuce{font-size:12px;color:var(--soft2);text-align:center}
+ .telecharger{display:inline-flex;align-items:center;gap:7px;font-family:inherit;font-weight:800;font-size:11px;
+  letter-spacing:1.6px;text-transform:uppercase;color:var(--soft);background:transparent;
+  border:1px solid var(--hair);border-radius:99px;padding:9px 16px;cursor:pointer;transition:color .2s,border-color .2s}
+ .telecharger:hover{color:#fff;border-color:rgba(255,255,255,.6)}
+ .telecharger svg{width:13px;height:13px}
+ .telecharger[disabled]{opacity:.6;cursor:wait}
+ .astuce{font-size:11px;color:var(--soft2);text-align:center}
  body.fige{overflow:hidden}
- @media (prefers-reduced-motion:reduce){.vignette img,.scene img{transition:none}}
+ @media (prefers-reduced-motion:reduce){.vignette img,.diapo img,.diapo{transition:none!important;animation:none!important}.vis{animation:none!important}}
 </style>
 </head>
 <body>
@@ -94,7 +103,9 @@
     </button>
   </div>
   <div class="scene" id="scene">
-    <img id="grande" alt="">
+    <div class="diapo"><img alt="" draggable="false"></div>
+    <div class="diapo"><img alt="" draggable="false"></div>
+    <div class="diapo"><img alt="" draggable="false"></div>
     <button class="rond fleche g" id="prec" type="button" aria-label="Photo précédente">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
     </button>
@@ -146,24 +157,61 @@ new IntersectionObserver(es => { if (es[0].isIntersecting && affichees < IDS.len
 afficherSuite();
 
 // Visionneuse
-const vis = document.getElementById('vis'), grande = document.getElementById('grande'),
+const vis = document.getElementById('vis'), scene = document.getElementById('scene'),
       num = document.getElementById('num'), btn = document.getElementById('telecharger'),
       libelle = btn.querySelector('span');
-let courant = 0, dernierFocus = null;
+let diapos = [...scene.querySelectorAll('.diapo')];      // [précédente, courante, suivante]
+let courant = 0, dernierFocus = null, enCours = false;
+const ECART = 28, EASE = 'cubic-bezier(.22,.8,.24,1)';
+const DUREE = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 440;
+const tour = i => (i + IDS.length) % IDS.length;
 const largeur = () => Math.min(2000, Math.round(Math.max(innerWidth, innerHeight) * (devicePixelRatio || 1)));
+
+function charger(d, i) {
+  const im = d.querySelector('img'), src = img(IDS[i], largeur());
+  if (im.dataset.src === src) return;
+  im.classList.remove('ok');
+  im.onload = () => im.classList.add('ok');
+  im.dataset.src = src; im.src = src;
+  im.alt = 'Hygie Race 4, photo ' + (i + 1);
+}
+// Place les 3 diapos ; dx = décalage du doigt. La photo qui s'éloigne rétrécit et s'estompe un peu.
+function placer(dx, duree) {
+  const pas = scene.clientWidth + ECART;
+  diapos.forEach((d, k) => {
+    const pos = k - 1 + dx / pas, dist = Math.min(1, Math.abs(pos));
+    d.style.transition = duree ? `transform ${duree}ms ${EASE}, opacity ${duree}ms ${EASE}` : 'none';
+    d.style.transform = `translate3d(${pos * pas}px,0,0) scale(${1 - .08 * dist})`;
+    d.style.opacity = 1 - .45 * dist;
+    d.classList.toggle('centre', k === 1);
+  });
+}
+function legende() { num.textContent = (courant + 1) + ' / ' + IDS.length; }
 function montrer(i) {
-  courant = (i + IDS.length) % IDS.length;
-  num.textContent = (courant + 1) + ' / ' + IDS.length;
-  grande.classList.add('charge');
-  grande.onload = () => grande.classList.remove('charge');
-  grande.src = img(IDS[courant], largeur());
-  grande.alt = 'Hygie Race 4, photo ' + (courant + 1);
-  // précharge la suivante
-  new Image().src = img(IDS[(courant + 1) % IDS.length], largeur());
+  courant = tour(i);
+  charger(diapos[0], tour(courant - 1)); charger(diapos[1], courant); charger(diapos[2], tour(courant + 1));
+  placer(0, 0); legende();
+}
+// dir = +1 (suivante) ou -1 (précédente) ; part de la position actuelle du doigt si on glissait.
+function aller(dir, depuis = 0) {
+  if (enCours) return;
+  enCours = true;
+  const pas = scene.clientWidth + ECART;
+  const reste = Math.max(.35, 1 - Math.abs(depuis) / pas);   // plus on a glissé, plus la fin est courte
+  const duree = Math.round(DUREE * reste);
+  placer(-dir * pas, duree);
+  courant = tour(courant + dir); legende();
+  setTimeout(() => {
+    if (dir > 0) { diapos.push(diapos.shift()); charger(diapos[2], tour(courant + 1)); }
+    else { diapos.unshift(diapos.pop()); charger(diapos[0], tour(courant - 1)); }
+    placer(0, 0);
+    enCours = false;
+  }, duree + 20);
 }
 function ouvrir(i) {
   dernierFocus = document.activeElement;
   vis.hidden = false; document.body.classList.add('fige');
+  vis.classList.add('ouverture'); setTimeout(() => vis.classList.remove('ouverture'), 600);
   montrer(i);
   history.pushState({ photo: 1 }, '');
   document.getElementById('fermer').focus();
@@ -176,24 +224,39 @@ function fermer(depuisHistorique) {
 }
 // Le bouton « retour » du téléphone ferme la photo au lieu de quitter la page.
 addEventListener('popstate', () => fermer(true));
+addEventListener('resize', () => { if (!vis.hidden && !enCours) placer(0, 0); });
 document.getElementById('fermer').onclick = () => fermer();
-document.getElementById('prec').onclick = () => montrer(courant - 1);
-document.getElementById('suiv').onclick = () => montrer(courant + 1);
+document.getElementById('prec').onclick = () => aller(-1);
+document.getElementById('suiv').onclick = () => aller(1);
 addEventListener('keydown', e => {
   if (vis.hidden) return;
   if (e.key === 'Escape') fermer();
-  if (e.key === 'ArrowLeft') montrer(courant - 1);
-  if (e.key === 'ArrowRight') montrer(courant + 1);
+  if (e.key === 'ArrowLeft') aller(-1);
+  if (e.key === 'ArrowRight') aller(1);
 });
-let x0 = null, y0 = null;
-const scene = document.getElementById('scene');
-scene.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
-scene.addEventListener('touchend', e => {
+
+// Glisser au doigt : la photo suit, puis part (ou revient) avec la même courbe.
+let x0 = null, y0 = 0, t0 = 0, dx = 0, sens = null;
+scene.addEventListener('touchstart', e => {
+  if (enCours || e.touches.length > 1) { x0 = null; return; }
+  x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; t0 = performance.now(); dx = 0; sens = null;
+}, { passive: true });
+scene.addEventListener('touchmove', e => {
   if (x0 === null) return;
-  const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
-  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) montrer(courant + (dx < 0 ? 1 : -1));
+  const mx = e.touches[0].clientX - x0, my = e.touches[0].clientY - y0;
+  if (!sens && Math.hypot(mx, my) > 8) sens = Math.abs(mx) > Math.abs(my) ? 'h' : 'v';
+  if (sens !== 'h') return;
+  dx = mx; placer(dx, 0);
+}, { passive: true });
+scene.addEventListener('touchend', () => {
+  if (x0 === null) return;
   x0 = null;
+  if (sens !== 'h') return;
+  const vitesse = Math.abs(dx) / Math.max(1, performance.now() - t0);   // px/ms
+  if (Math.abs(dx) > scene.clientWidth * .22 || (vitesse > .45 && Math.abs(dx) > 24)) aller(dx < 0 ? 1 : -1, dx);
+  else placer(0, 320);
 });
+scene.addEventListener('touchcancel', () => { if (x0 !== null) { x0 = null; placer(0, 320); } });
 
 // Téléchargement : sur téléphone, la feuille de partage propose « Enregistrer l'image » (pellicule).
 btn.onclick = async () => {
