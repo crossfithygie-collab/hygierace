@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Photos · Hygie Race 4</title>
+<meta property="og:title" content="Les photos de la Hygie Race 4">
+<meta property="og:description" content="Retrouve-toi parmi les 303 photos de la Hygie Race 4 (4 octobre 2026) et télécharge-les gratuitement.">
+<meta property="og:image" content="https://lh3.googleusercontent.com/d/1Gt1JIlEJ98MFj8wmu1Xd35Hv8-aM4w6Z=w1200">
+<meta name="theme-color" content="#1800AD">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://lh3.googleusercontent.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800;1,900&family=Permanent+Marker&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="race4.css?v=4">
+<style>
+ .wrap.large{max-width:1100px}
+ .hero h1{font-size:clamp(44px,13vw,76px)}
+ .intro{max-width:460px;margin:18px auto 0;font-size:15px;line-height:1.5;color:var(--soft);text-align:center}
+ .compte{display:block;margin-top:6px;font-weight:800;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#fff}
+
+ .grille{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:34px}
+ @media (min-width:640px){.grille{grid-template-columns:repeat(3,1fr);gap:8px}}
+ @media (min-width:960px){.grille{grid-template-columns:repeat(4,1fr)}}
+ .vignette{position:relative;display:block;padding:0;border:0;margin:0;cursor:zoom-in;
+  aspect-ratio:3/2;overflow:hidden;border-radius:4px;background:var(--fill);width:100%}
+ .vignette img{display:block;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s,transform .35s}
+ .vignette img.ok{opacity:1}
+ .vignette:hover img{transform:scale(1.04)}
+ .vignette:focus-visible{outline:3px solid #fff;outline-offset:2px}
+ .vignette .dl{position:absolute;right:6px;bottom:6px;width:34px;height:34px;border-radius:50%;
+  display:grid;place-items:center;background:rgba(24,0,173,.82);border:1.5px solid rgba(255,255,255,.6);color:#fff}
+ .vignette .dl svg{width:16px;height:16px}
+
+ .plus{display:block;margin:26px auto 0;font-family:inherit;font-weight:900;font-size:12px;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--blue);background:#fff;border:0;border-radius:99px;padding:14px 26px;cursor:pointer}
+ .plus[hidden]{display:none}
+
+ /* Visionneuse plein écran */
+ .vis{position:fixed;inset:0;z-index:50;background:#0b0640;display:flex;flex-direction:column;
+  padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+ .vis[hidden]{display:none}
+ .vis-haut{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;gap:12px}
+ .vis-num{font-weight:800;font-size:12px;letter-spacing:2px;color:var(--soft);font-variant-numeric:tabular-nums}
+ .rond{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--hair);background:transparent;color:#fff;
+  display:grid;place-items:center;cursor:pointer;flex:none}
+ .rond svg{width:20px;height:20px}
+ .rond:focus-visible,.telecharger:focus-visible{outline:3px solid #fff;outline-offset:2px}
+ .scene{flex:1;min-height:0;position:relative;display:flex;align-items:center;justify-content:center;touch-action:pan-y}
+ .scene img{max-width:100%;max-height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none;transition:opacity .2s}
+ .scene img.charge{opacity:.35}
+ .fleche{position:absolute;top:50%;transform:translateY(-50%);background:rgba(24,0,173,.6)}
+ .fleche.g{left:12px} .fleche.d{right:12px}
+ @media (hover:none){.fleche{display:none}}
+ .vis-bas{padding:14px 16px 18px;display:flex;flex-direction:column;align-items:center;gap:8px}
+ .telecharger{display:inline-flex;align-items:center;gap:10px;font-family:inherit;font-weight:900;font-size:14px;
+  letter-spacing:1px;text-transform:uppercase;color:var(--blue);background:#fff;border:0;border-radius:99px;
+  padding:15px 28px;cursor:pointer;min-width:240px;justify-content:center}
+ .telecharger svg{width:18px;height:18px}
+ .telecharger[disabled]{opacity:.7;cursor:wait}
+ .astuce{font-size:12px;color:var(--soft2);text-align:center}
+ body.fige{overflow:hidden}
+ @media (prefers-reduced-motion:reduce){.vignette img,.scene img{transition:none}}
+</style>
+</head>
+<body>
+<div class="frame"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></div>
+
+<nav class="nav">
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="race4-leaderboard.html">Leaderboard</a></li>
+    <li><a href="photos.html" class="active">Photos</a></li>
+  </ul>
+</nav>
+
+<div class="wrap large">
+  <div class="logo-wrap"><img class="logo" src="race4-logo.png" alt="RAC4 · CrossFit Hygie"></div>
+  <div class="hero">
+    <span class="stamp">04 · 10 · 26</span>
+    <h1>Les photos</h1>
+    <p class="intro">Retrouve-toi, touche une photo pour l'agrandir puis télécharge-la. Elles sont libres pour tes réseaux&nbsp;: pense à identifier <strong>@crossfithygie</strong>.
+      <span class="compte">303 photos</span></p>
+  </div>
+
+  <div class="grille" id="grille"></div>
+  <button class="plus" id="plus" type="button">Voir plus de photos</button>
+</div>
+
+<div class="vis" id="vis" hidden role="dialog" aria-modal="true" aria-label="Photo agrandie">
+  <div class="vis-haut">
+    <span class="vis-num" id="num"></span>
+    <button class="rond" id="fermer" type="button" aria-label="Fermer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="scene" id="scene">
+    <img id="grande" alt="">
+    <button class="rond fleche g" id="prec" type="button" aria-label="Photo précédente">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <button class="rond fleche d" id="suiv" type="button" aria-label="Photo suivante">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+  <div class="vis-bas">
+    <button class="telecharger" id="telecharger" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+      <span>Télécharger</span>
+    </button>
+    <span class="astuce" id="astuce">Glisse à gauche ou à droite pour changer de photo</span>
+  </div>
+</div>
+
+<script>
+const IDS = ["1Gt1JIlEJ98MFj8wmu1Xd35Hv8-aM4w6Z","1Usg2IMvzmhDdPIva6rYB3bZAP9khKlUq","1Yv4az6b4Ef495Lq5DM4ZUHCIT8S_tYAd","1NUFRpQiFH-eaBk9IN5W7KN1WuvDuDHc-","1XNhylG2dZazxc8De9wX0D2k33knTnsND","1VvfVztLbgdoU8ZvLvpQ4RofYS4iukZHT","1HI6UKlDxDh3Q4Cj_8i9JRXwGw88hCRZ1","1Za5OtwqtlcbPunNmRicHXgMfdgOTBvR1","1_yvYuQmi52oCmU6PU6YL8FxvQd-dZi3m","1lgctmbk4NUvGmElmOnmeWrpla8nkrRlT","173yjRrmaq_iCsBpZDwjPOB3JhKkAwjhO","1_h3qM6nLqEuY8TShN4JyK3ZHXFjrMS4Q","1mIAN4aL_cT6_KtMOGzjO1lQTMuyJ4ThG","1AzOyxlaNMoaU-zFzhBFlHDcqzNPMXNTT","1p_i4vwz_wRTFUu_0iASnpJ9Ua4rSpv3q","1ZCRE1cnzcYKYHuUyQ9FQGtT5zw03inp0","1--TSmbfy4Kq6owuz4vqLTqJDaGF54bY-","102bbjNqZ6Lj0n0B9HG7JCW2yH7-4BneN","1cHzlo5tfJwLD_CLqVGVgEC3ZW_s6ZHh1","1kXr8C6-INFaDhsQuekSQJ1fsRb5xwrCA","10XThdFdft0svGw6gzfGQ8Iwy6lDrVL0G","1vsDhvQVswDnvXtK5af_BTdIcUF79l0eo","1zGjZp-6claScgurKoszvUuazNqicxTPC","1WfvhDs_Axv5F5YtNmRODuCY_tiVh0S2b","1ZiXvi6wrv0z1oiNlIECwJVxT2AUc9YYq","1dLskwrO1T-x0UrNg_MDjJiZHJ1etOxI4","1JlqlMl-emd2CJdXLA45VFoxD1pRZXVil","115LfUvxKMUDryGu-06mu3kwqoCYDsVvl","1gIPsO1fw3fVpSbifpFAfimMw4Pckd3PH","14zXYte-OE7DqKIqYopPC-NodnyH6XoaP","1gxjH8mtY3r13A_nv0hD6UzfLn0vfHvok","1rgvKznMLa2TW9zElKpGfpSpYyH2M9N2v","1LB-V3BHo8Uc_ooDAhNDze32uBM0jRpxM","1XVEB4Tv63Hlezcx4IdGAiU_7-CLtPxtB","1E8WlY2ai6oi64HpTGIztRnqGX5MYCzjV","1FvlLoH0NW7UHdeaZWIKZzVhSNZ4fiimV","1HJndnuw1dYuZQXzXs-_B_5ZnyEiP2FGp","1tNW2zg7DTRtw4TCPpX1exDvRIHT2jd3X","1NP1eKYEyaZ3eJ9B2V5ytBlgQ-G32gQnr","1I8CG9hr8dyxP5uLNZ3C1I8LDq6LWSEVm","1VIl8adV39LskPpPaHU1-Tf9rw9PlZJGM","12IGPOcbseggq1a51AC6MmIdRo5ZC7IXa","1-i1GHzQjvsR9x5s1ZkM60P-jAC-1MPna","1X2c4X5baFxbo2zR75DtG7rvVYY7aGMN7","1QH4eh5gNVxYp8XSGtxnHxDMj8cDzaet4","1I2w8vlXTslPdXFoxno6DZUI0wq2yZHip","1EeG5Pzph-J0Whp9X-cLZi3vJo339QUu3","11KlNGLodKY14k33btYFRKdNX6O97Mzl3","1AVIKS1OxOTMfZ2JDdki17PX3AkZ74XMg","1YG5OUaNb-Gr9MK66yt0lnrgVeZcR5CaQ","1MMV6EySFzdAmz9-ieUHRw0zGKpMzHktq","1zuCaDsTegPTckIWmIChUKToSh8RfBAct","13OMd9686v8BUu6SqFj3PBgKEY58Puqv6","1NOtzwHQCFNydGphS_R1C4tKitsUHKhwp","1PEeA_vIHpetOm2enqp5YFbjrXJTD5Qzv","1e90tboBB2J4KvbK8qlqcKq1AGYr9Dv-o","1r6yNLddSDWQ8SlmlhWQUky2oX50HTRs3","10_kOsLWhXXYkxNh5Ph7xJPSONCyOad0k","1_zjftnQD5XPTwTFf557GEalDFp9taObe","1k1JTX5VcZ9b1sNwBE4L2Hu3yhyaa7gFl","1TIDL7PT3nLbqApOY-2Bi1RxtGg9eVUAq","1hKylvyu5WxuboiPuE8yovcYQWhCGixck","1I9MlnhEti0bMV259pvSVDShEiiM5LTgG","1uNu7mwxf2zd_qmc1HoV5R8rs2yT3m_m9","1s50q3lO2nUuYUy6FtaznUjHzxXo0XozP","19Hty3FgTRgy0NFlt-vpAAGXXWQsiJVyp","1Wuig7XyIsXwlct9VvsZUkEtz0wP7twSy","1yjSGf58x6vo56Q6oTdkMtkaFpbwot-q2","1Q_88VV1568rv1GAeLj-3k_IwIS_h0gva","1edAWRI5ljI19z9evRiUcw4IM_s45U7z2","1m97r61SMADpT4OXHNllYdNUHey_hyt99","1Pt_4bfIFEp9tW0QphxaRhpy8J-smHg2V","1JrWpHnYHd3tHJb-gUceJ4lhtPmuREsSv","1atqGMWRhg_QhoppiUwMHZK2_Bqpy2WEg","1aKWnwzB7mXhSghd_Ih4xhevL0v_8KmQY","15DgDOkBO-mPrBZdlGD0D2EeM62SWVe3F","1WE-bnwE2DGSSapZqpGpxLZUj9AXgVMSg","1rdMc2jHuD0hs47bZmV0stpCYz9z3OOWB","1beJdP8tSIxLfbQ-nOA8qHMP08Fwh913q","1vg1ikQ6sQSvO8VqTv2izaKV7B5vthkCv","1fgelCTnW7emN6dNx42QS5CojU1PwAFMq","16Edw_WHsoDBZibiE4Hnmv7Tj0Rfhp7ft","1B_QZvMtB2NJS48jS2o50eXfsPrNLKrW8","1ib4mcBLkLr8l8QwKHzzprY3L6oeHxKd3","1Hs5PboWVSpciJ0e5w0Psc8sj0XaSLf_8","1uyolVNLZkl_eGxXukZ2Q-zZKq4lsIevo","1Eoe6IFDlWQK-6OW6rus8lH-z4Yj1ph7T","1cnj8Z3l7kJ5EGkvPpCzdTIEk2bkcHYjd","1H0U-PwhJ4hJfB_nw4c7CPU4PfboYSHp5","1rMYnh31WOPLN8HXh4Sgzbitp60R2pjJ5","1nW91dGPQ-AG9N1pVgaJKFClskkiV-SSD","1ah6CSLkWv838Uo3mGC5knLx8Uz7K5hwy","16AHMbovbekw-V64N9EsUCEo6nRigUFPw","1bqWmYAoPLvzK1ojcFCmi1sVdu6UlAP-L","17Jh6eTF-jLiKaaBmET0Z25CgyqYZclTg","1hI1AqWTANu_J6HVkWlxtM4cv3NYvqW1q","1SRE9OyPnSBjUfO6bk3H_RUHY1fovyoXR","1cIaRXpSieXKXi0d-PEpSo07dkIc8vL9R","1SbNF0mqnCA5UNDwWwnC1Ob6vHZaWVwYI","1qcM79yDw-vDjILp3dXJC4n9h4btOcCo6","1PNLXw3rCgVjt6q3WOcAKzntmj6tfX-w_","1Hd4IpYcXl6gzJyH7Y2Er6jCCKnyH3_Po","1xOxn2uAtGhq8hCuajDTdQTCl_0G0Gwvs","1fHomHEV2z5rV1gRs05qrw3oPVPSOHSLI","13hdIYUOhbJll87wfq8RjIJZvxDyoX1oY","1zDCWLpC1Rzuuf7BRbDlGCGogMbUTpW-X","1tR4YLr3XIYFf3A2qzmmcEO_KJ8WzqFZ3","1fhWLJIPOdI0oKUM45LQZ74pVGJuucBn_","14Y2w4BQ5MYqOB7RrQWVbVKofUfc0mzf5","1KH8EZvEkGX2YYzxJ8VOyASgURWgcGy_p","1ATCIi-NWCqzkclp0BDMVNcPh5FBMDRSi","1WAJIjgKxQu1M8N4xYfbLxWKso_NXpXjF","1PeVmlOqNik_CJit4qH8fnsI7sSzaT6Br","10OkVc7G4dW2MSQfinLrLOXdQX2PQkqmH","1T6L9h5F9q-ODTWC50DQWI3mWUXWdhB7F","1yMqV9E9KzA_hVOum1r7CrZ_x0efTRS5k","10jrkSmzs3FQRj3ziFJhuZa69bcMFDLoO","11BbSDUFPxsRla8ZHLQW8p6z5Rva0ER3I","18fss0JhSE2KhZCbNPLeNv4DI4AmaLt0y","1H36cMeIHq_B-tleofzb12vDgWBRIcFKl","1RUS4MqqpvvRiw4uxtZ3fUW3sqsXGElYw","1esrBzgH_TX1RQ0g0MzZLHuuy6dtkf9Po","1y4yKtM6JMz5h9HANKOcqGD9wzQEX5pWi","1rLy5BJ2PoQjjBd23iu_xU9pZmmyq9UBs","1aUmf9sPzDtOJKiCVHEKPnWrMYCrR9MXd","1jm0K0LymqR3X1IclkpfDsRxPuiwKy0k0","1VI1neuKKPTQ4ff_eVzMlf7ktIJF94mdo","1aCj42Fsuo3ZXPH5FG2qQEWpoHeRYkM1s","1NsUZvDjcjk1TFHADghQ31brf9z7N8NJB","1b-3fUVDTTIUuiEOw7_Hl24gw9EV_-VG1","1Q3ORqPXs5SqC8SrFOKyTIUEoEhGSsVxX","18ts5O1JD6TA4O4bG4AYZlSqbGHRCa-Ww","10leaeVms8V8_5gP9H0mCs6qw7mATXD-U","1mIS7oXyxrGKNoFNPjjDeDaZE7svZ2_Ra","1xZosptI5VfMhBEe-_iLPFrGWcYqAtBCu","1Tt_pki489ywhIAf0yIE_mQOMY9Tn-oIJ","1V6BsrG5qBVjrr5neuffwGWo6xxkHyXA8","1bKzyVtsbMZyGBUB935S4WGg5zO-DSxNX","1dIOr6GbF12X5obSzg4VCPDnfkKxJNbwX","1K7B6KJa1NXYGvM98adIdPKwRsFMLJk9w","1zZTTf7FmWU8la4C9h6ZChip_uD1rgDnk","1PFxAAh7pqEN564ANGvcIjgd4hbanrlxN","13DG7ROno5U2JlteLoYjKOz3FLu8jsi7k","1nQumUKTatVUmIO1aHPP96pAABbhRjCbB","19ekj1arRYC-N2IMKiW6NdZEvHrKIWzmY","1cwcM2fpOmgJuXfqTvbS2WFAxrklZKrMd","1fqwf_72RQ7Nn5hNt8wcUKfn3Pt4j2zTr","1hVND3y5rP-aM7d_jR7iVbh5B22HVPjCP","1gCxGeoW3yH2TM9d__1hOCB_neM2nxnJf","1Bd6h6vcLwJAq2yKZhTNI2LHC_VY1hvnu","1NYxqp8IsrMisB1Ei_pSsn06JvbrAOCOM","1jCbHESeqDRE0lGdAnLprpKOOMOvm9B7x","1LFNPtUE3S2AVoY0w8GhdLmgkXqANZ9gt","1X2cTZV1kl_JPCu4wnAEFIxL6kV9XQlfG","1cpef_LBf8-8rIk6wY0RMFUOucwWSO98x","1hIRDeXPMZlJHzIQyXEvyLnp7OrZMUiFn","1i-qKquoEpaZ7XRy6E9Gtb2hsH7CLftwG","1xUBD5GyZkLUrfWX-5EZzrFQ6Mk6KJbDf","1Y-uUpg6oV_K31LuCHmfejTT1SRZnjkSq","1XPSYvzAuiQbxp2uOyjVVG-YPuqHDXfk-","124O_s7QHcRM5uQlCN-Wp70GjFTefQk_8","1G2RjYRCbZUSwTFX9RICOBxngeFR9P8Vz","15ISa0KZoGdkd7bqWJvZ5L41NqbOHRJbB","1RgbLvO7Cnx6k5NGIFZOLc5GI0-VknkAb","1oJS5Jc4LgrWvDHVHTQXzkRV6MmRbDhtl","1wFOT4CBbxRhf2HkgikIyrUKbG_yeQXV4","1wMsZ-PRJfSHb99OKvvcouX1t3yFnymMh","1qV4YfNxaRx6v5Ux_DQtjLz28VJX7ALq-","1Qkw2U0MxiKXvO8OM5mfMJiyazR2RSgGn","1X336iVIQ1vx9b8Vr7YnmtaCuApUajWfk","1RBF9c61IG4IQD2WIv9sX7rDQIXe7d1LT","1hEj9sLH08yVaImgxgQKf7mIvk9HI3UXm","1ikkiUBp0drwyNPw5cuOChnIVBvT0ryJ6","1ia3f3-EolfM7Ov2WL1FSSyrZPpkwt_cG","1XwEyVyqMMZJKBVT87dIhEPYcjeYcFtpa","1cUsGI1ZXDrmqrznDlFX9AGyCdM8UIGdD","1sH_kL0jPUSlxxT1qkRVDJ7_wiyF-aMYG","1adZn0t1UhGYgJmQKKaEVypq8_CbIw6Zk","18_Jy-PlSWBRbjB5B73wWMnlUsMwq4tQ8","1L36DdTNG0SUc_umaoH2frIgbgTk2rloJ","1QWqANj6f77fhYFalJy98AKNw9EsR9M83","1evKaV79Gax2vopJOmX_tKywVt-uBrkZ_","1OrRPFiQ7zGPk_1pjRxc3fyLKQkvgr355","1N58roIIaHYQiXL3s0SCrGdql6AVMJgj4","1Ehv-rA_-uU_W9ODxfwo6xdOExBOtWXat","1Yu612eo55mJ0p2OEZ-4_HyIRKXIY77KR","14-4mceDk10SbTQG4IO4s51ZdfT8aRcjx","101_bjKrFj-8rZPS2pSZyvCJAA9GdkWQh","1v_hjGEBcEHDjQIcpM-cYWtG7-ClnhRH4","1zKeGRqQSIPx8LJFADl2PMBXpC1GT0G8S","1AVB-4fLP8pXO8EWLa9ghfYGhtHBo_U4S","1tQJN0JKkpXnk-o55KZMMsAbGUdlbXhdp","13rHs3Sgcvc45A2yfnbheIRmYFlMP5zH1","1DJr896t6Xvs4HB0yDUBzTWgVuIWa6hzA","1wSQFO6EYkyvE3YqOvNMs-5YMvlaIDj3l","1iCPp21rL5LIBUr7w0N49di_XRfZVeL7g","114tgBxSMQGgAmtwrGqji664eN8t2p0-0","1lKbDMmII7KZg1h8aAOwj6DxT6WyTK-LX","15zY0G5HpOcjngYeEH6rk7p_LJemhCgaE","1kTF9qHj00KaOEp7dMZ15uB89J__UU6Pp","1DNkSzFbdITT4sWwntj6Fl_qrlq7TW2Ws","1NSYUpWr8V6yVNoA3mcS3T9bkGF3H9ScJ","1RIeT9Th96rnJ5umrjzH8GE6T0uOrLing","1yw1eISJnX7JAX6WdlX9xyYr9aYzW7LFo","1JceJ2A3p7sbnfxdnDKBp_1jtrh_SlJqs","10r3NXtupfZEtiSXgbxra6cFtj1HYEKs9","1wDR5fCWDWDn4dDM3xQYgqnoTVwLuPNr0","13ytSZTcwrZ_GGl9nBklvtzqnL1zE6gYi","1Dh_QkLUvMsb1J4ZTKpMFyhE1U5rhsDno","1URrsMoCt_fjeQm3FyIznUi6GCUWBznse","1isSQMqtvb1tDEud333rHjBruyv1WC4hU","1vULVBHbVsssG4kn-2UofQYMUQEqiUF6G","1IBBaVyFzFkIonLNQofptnrcq2OuV_9ZL","17taOgcZwMVHFvNQ8_ukA91T5FB44JGZc","1C3h9M2vI3A5OpL6u5_bcF9am8dh9I5TW","112ASxmgUcStVdsW8Q0VPzjsfaebUnVIG","1PJ79ZFau76VOfVFvUX2m653yNWzQEvIX","1QA6mAskO5tDotJM1PfEx2kWfBnnNUrQ5","19XcIwKkuHt63DoCaFysmr5JqlKDle27n","1bZIfpdmN-6ehAXM3TNYy-DtFKbdxs4K3","1OK51gR9u9P9qXM37gW6JYbTY0mTkVBf6","1zXHJ1CSGDSbU5GNXCh39aTCa4kEyhpjG","17xQEX4GmVCW1DgfE48_Ij7SaZyssUV0o","1-V0VQsixekTrYsY8JmpmTTTpjB0YuVVd","1kptXsOeKQZUjp6JHBnnlFNxcHRN1CU5_","1QIEb6fqSZGWmOGse0ZLnVavv0xgqgsjt","125UVPFxz2zJ2VS4xU2URtHKXBVfLlWYH","1Rnelaw12Ffbr53ASG2OQxDSt7PwNqqYi","1Wkxht8MGLmBZMSouDvb9wZ17SonhUIZY","1W-JZdYHf-PUZI2HnHSLIIshSDAprcv3t","1GtoWt-OXNA0btFX_DUdJQTaOzG5Gtv_Q","1GsdQDJOp4SNau23OoSYYH-tnTDgv0mnV","1SUinQncuN5s_wZXywRz-Vn6tlKAq2RaA","1gwR1Rw5CYyJkkDE7qHhilGui_xyo1BYe","1lmCjFvwdnJ9d7dDFvW72pdKrv3HEZd7x","1rhuVRqADjN6_1JjZPSLg2NGpxRZ0HDrP","1Kf39wK0yfb7Tr-eioibgjQSqRk8A8dna","1erKc9q_KwI6oV2pwyxVApiyzG8tROeVt","1uxCzC9gNm6IJfeTYdN5TOXSBxcm6SF_w","1ZZedjj4y3QxiqRCJ_OhY6K5muaFC4ZhO","19kOLYyxOVowryuu15ohUKQo8hDRD9jtC","1_VJVASPXV-n_kcyv_QIJDNzL2OGnQO2E","1pmYtIpsPO2cx5BdTkTlgbNsJMg7DAmB1","1Bl4JvWxqBY0Wf-Mykau4MPpyVJkqWNnh","1Cwb9i_LRfkf9XRqWtJRgspSNQbsgngBF","1XRQce-hqNYKiYzQKFykgVMCkWpaCnmOo","1UQXRP2PmAqWiLWwFRE6S0oWVDWv67d3s","1knWPsvacbQ1dGhEYvu_9L9E6BMUZfi1e","1YuXa7trKpNXwoi7JhB7hBTcVm5RunnPb","15WNXnbE0pcEcbKMFGwGLFv_QIhLW9L4m","1iIA8OEJy5QBiWL2d9PsfBIS91RtSFHyA","1ZkxAnoq4mq7sQ8nn8fyoKvSDxSk878oa","1dUKDunFCnvIu8V6lyFPFi3P422U9ooyx","1FPn13K8fZfZk4B72l-K8auVUZhB6bcZF","188qQmVYlul00cdyR5xj_6S3xYHAdwM9o","14mep3XdscvdCkFriuxm5VBD5am6vQLxk","1olOepsnrnXce3zi5FbEHY4In54aXUbEH","1U-yUf1BCtCCQwHRjsBVPDeU7w05up4TI","1-7GOhlrKos7vOYD9oQR-0YUzvVytnvub","1hqzhDYJ3miff13vmcOKrWqNiAjzCqmTM","1L8N96lxeCpHZQykDMVMlMTnIYGVy9rIB","1w3hs0PLNRS46Moya7WESINT9WMfgTfKn","1WgtrYx-wftHQ7jQytymfga_aNH0Ho8Pa","1BSBqb1vSAKoEIobYRElFAnYtSXsnaBp2","19RpqP96rgnDOncmKtnowzEJWVbyEfgII","1K-ruXz9XOG2gS2AhTf3VwYwJYxAf_WTk","1qIoDy5vjyagQxwogM8VS1srl7P7jZLYj","1mLjKSXnmJNVIl6R0gODuLVo4tQRyxAgi","1gZWmWBySbIbodRqyP5WF0qTveNhMU6t5","1zvlv4DIHcVRMc5vV0DJqYKcLLsXZ6rfy","1s6Sn4UXCSdRFYiGa9tp1TPLWJjZNRSYi","1roJSCUBFG7k531LmtVvIW499BEvKntbr","1k59SZv911sORhetXOxzLxIbiFfT2loMG","1mMZDzSpKSA4hPhxLWvXcJvu1VCAUipZV","1kGKqLqBDvKhgO9YoPHe4WMbzoHz6JAtB","1ZR4IHBYYWoMIZ99OGAFW_HYEHnaAAxdH","1NvfWMh3rW9kSvdYs-hu0HZHk3wWcIkNx","18sYvir23qWklz4G7X04fM78cgKFhTaJH","1yZdmcM6R7pSdfODRL2jLk1g09D6SR2F1","1F8MmfLbWTj5kzQt4gtrlKwv5pGcOVTbT","1bgohpxqWKtXDr1RjoJKUfAU9VuSV7ZWq","1RMA-KmDEs42y-gOtnO5bGrLq9GvMMDrb","10vwfr6TuDBVtPV-Jg2Ttr1Nme9Ttv8GD","1gkEbRiXV5Ui5Yam6jXXrKavLD4L_suw4","1ufTvPR6Sm2HDYfjWINaQ7JatZt04YB19","1BmOBxqLTgv09Ku6cSEOrDKkx3LBKRTcs","1XJlDf7kuTDkKM2QkX6MPryUVNChBfa4C","1oZbl6jwIuWIAdEGzO4QkWapJiA7hzsq4","1xYR2R4oQD2x0P5SZdcEUVtHhNdJE_wOu","1hBrpCPr7mye5p_2jIRL4_aK7OTJ1S6YI","1zR41UeoGd32llBxEjovLtzmCfAge2wxb","1xFiOJ95yVpFq4YyzCF-Zzwxahsr4u3bW","1hjmbtTgOBCTU3_9bmwTUPJvo5J9BeQAW","1O-xshbPqXKjwU0SWVxDbFFtZ2G7_kDJt","1nDFE52SuWObN3QaVB2OMfZ8S1qYQ8jQn","1bJWf5vGUB1twj5S7VwfvI10CUwjEJSLQ","1SRDiI1-qEUgw9zlpBGgG1ymiw2RYk4Pt","1dWaBU7cGaba0EIgicfdswhpZelTHXzqJ","1m3HmWpEeX9cKblIIU4WAhEUz6JV-uef-","1aMU_lMrGniLn5bGsGmu-zw4oXLuLZZNm","18rrY3RkLn_h2nbQpju24DgV6KWdcG6k_","1IEYxBtqNgOGOTCc16uA5_jdBGUKf14yo","10GL2sNcAybZmYSF-4QvHmdi8ZWOnFl-Q"];
+const NOMS = ["DSC05176","DSC05186","DSC05188","DSC05190","DSC05191","DSC05193","DSC05194","DSC05236","DSC05240","DSC05241","DSC05243","DSC05244","DSC05245","DSC05249","DSC05250","DSC05251","DSC05252","DSC05255","DSC05262","DSC05265","DSC05287","DSC05289","DSC05290","DSC05293","DSC05296","DSC05306","DSC05327","DSC05328","DSC05329","DSC05342","DSC05344","DSC05349","DSC05355","DSC05357","DSC05376","DSC05382","DSC05412","DSC05425","DSC05427","DSC05429","DSC05437","DSC05457","DSC05458","DSC05459","DSC05460","DSC05461","DSC05462","DSC05464","DSC05466","DSC05467","DSC05468","DSC05470","DSC05473","DSC05474","DSC05476","DSC05479","DSC05483","DSC05486","DSC05488","DSC05489","DSC05526","DSC05546","DSC05548","DSC05549","DSC05551","DSC05552","DSC05553","DSC05554","DSC05556","DSC05557","DSC05559","DSC05560","DSC05561","DSC05562","DSC05564","DSC05565","DSC05600","DSC05616","DSC05619","DSC05626","DSC05627","DSC05628","DSC05629","DSC05630","DSC05632","DSC05633","DSC05634","DSC05635","DSC05636","DSC05640","DSC05641","DSC05642","DSC05646","DSC05647","DSC05670","DSC05683","DSC05686","DSC05687","DSC05688","DSC05690","DSC05691","DSC05692","DSC05697","DSC05698","DSC05700","DSC05701","DSC05702","DSC05703","DSC05705","DSC05706","DSC05707","DSC05708","DSC05709","DSC05710","DSC05711","DSC05712","DSC05713","DSC05717","DSC05718","DSC05721","DSC05724","DSC05725","DSC05726","DSC05727","DSC05729","DSC05730","DSC05731","DSC05732","DSC05733","DSC05734","DSC05735","DSC05770","DSC05771","DSC05777","DSC05778","DSC05781","DSC05785","DSC05786","DSC05787","DSC05788","DSC05795","DSC05796","DSC05797","DSC05798","DSC05799","DSC05800","DSC05801","DSC05843","DSC05845","DSC05870","DSC05872","DSC05887","DSC05890","DSC05891","DSC05892","DSC05906","DSC05908","DSC05910","DSC05911","DSC05943","DSC05944","DSC05947","DSC05948","DSC05949","DSC05950","DSC05951","DSC05952","DSC05953","DSC05954","DSC05955","DSC05963","DSC05971","DSC05972","DSC05973","DSC05979","DSC05980","DSC05981","DSC05982","DSC05983","DSC05984","DSC05985","DSC05986","DSC05988","DSC05990","DSC05992","DSC06006","DSC06007","DSC06008","DSC06009","DSC06012","DSC06013","DSC06016","DSC06021","DSC06027","DSC06036","DSC06037","DSC06038","DSC06039","DSC06041","DSC06042","DSC06043","DSC06044","DSC06045","DSC06046","DSC06047","DSC06048","DSC06049","DSC06050","DSC06054","DSC06057","DSC06064","DSC06066","DSC06069","DSC06071","DSC06072","DSC06073","DSC06074","DSC06075","DSC06076","DSC06077","DSC06078","DSC06079","DSC06080","DSC06081","DSC06082","DSC06083","DSC06084","DSC06085","DSC06086","DSC06087","DSC06088","DSC06091","DSC06096","DSC06098","DSC06100","DSC06107","DSC06108","DSC06109","DSC06110","DSC06125","DSC06138","DSC06156","DSC06163","DSC06174","DSC06175","DSC06176","DSC06177","DSC06178","DSC06179","DSC06180","DSC06181","DSC06182","DSC06183","DSC06184","DSC06185","DSC06193","DSC06194","DSC06195","DSC06196","DSC06197","DSC06198","DSC06199","DSC06200","DSC06201","DSC06202","DSC06205","DSC06226","DSC06253","DSC06254","DSC06258","DSC06259","DSC06260","DSC06261","DSC06262","DSC06263","DSC06264","DSC06265","DSC06267","DSC06269","DSC06272","DSC06281","DSC06282","DSC06290","DSC06292","DSC06301","DSC06302","DSC06316","DSC06320","DSC06325","DSC06327","DSC06330","DSC06342","DSC06348","DSC06354","DSC06357","DSC06358","DSC06362","DSC06364","DSC06365","DSC06366","DSC06368","DSC06369","DSC06370"];
+const PAR_PAGE = 48;
+const img = (id, l) => `https://lh3.googleusercontent.com/d/${id}=w${l}`;
+const ICONE_DL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>';
+
+const grille = document.getElementById('grille'), plus = document.getElementById('plus');
+let affichees = 0;
+function afficherSuite() {
+  const fin = Math.min(IDS.length, affichees + PAR_PAGE), frag = document.createDocumentFragment();
+  for (let i = affichees; i < fin; i++) {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'vignette'; b.dataset.i = i;
+    b.setAttribute('aria-label', 'Agrandir la photo ' + (i + 1));
+    const im = new Image();
+    im.loading = 'lazy'; im.decoding = 'async'; im.alt = '';
+    im.src = img(IDS[i], 520);
+    im.onload = () => im.classList.add('ok');
+    b.append(im);
+    b.insertAdjacentHTML('beforeend', '<span class="dl" aria-hidden="true">' + ICONE_DL + '</span>');
+    frag.append(b);
+  }
+  grille.append(frag);
+  affichees = fin;
+  plus.hidden = affichees >= IDS.length;
+}
+plus.onclick = afficherSuite;
+grille.onclick = e => { const b = e.target.closest('.vignette'); if (b) ouvrir(+b.dataset.i); };
+// La suite se charge toute seule quand on arrive en bas.
+new IntersectionObserver(es => { if (es[0].isIntersecting && affichees < IDS.length) afficherSuite(); },
+  { rootMargin: '600px' }).observe(plus);
+afficherSuite();
+
+// Visionneuse
+const vis = document.getElementById('vis'), grande = document.getElementById('grande'),
+      num = document.getElementById('num'), btn = document.getElementById('telecharger'),
+      libelle = btn.querySelector('span');
+let courant = 0, dernierFocus = null;
+const largeur = () => Math.min(2000, Math.round(Math.max(innerWidth, innerHeight) * (devicePixelRatio || 1)));
+function montrer(i) {
+  courant = (i + IDS.length) % IDS.length;
+  num.textContent = (courant + 1) + ' / ' + IDS.length;
+  grande.classList.add('charge');
+  grande.onload = () => grande.classList.remove('charge');
+  grande.src = img(IDS[courant], largeur());
+  grande.alt = 'Hygie Race 4, photo ' + (courant + 1);
+  // précharge la suivante
+  new Image().src = img(IDS[(courant + 1) % IDS.length], largeur());
+}
+function ouvrir(i) {
+  dernierFocus = document.activeElement;
+  vis.hidden = false; document.body.classList.add('fige');
+  montrer(i);
+  history.pushState({ photo: 1 }, '');
+  document.getElementById('fermer').focus();
+}
+function fermer(depuisHistorique) {
+  if (vis.hidden) return;
+  vis.hidden = true; document.body.classList.remove('fige');
+  if (!depuisHistorique && history.state && history.state.photo) history.back();
+  if (dernierFocus) dernierFocus.focus();
+}
+// Le bouton « retour » du téléphone ferme la photo au lieu de quitter la page.
+addEventListener('popstate', () => fermer(true));
+document.getElementById('fermer').onclick = () => fermer();
+document.getElementById('prec').onclick = () => montrer(courant - 1);
+document.getElementById('suiv').onclick = () => montrer(courant + 1);
+addEventListener('keydown', e => {
+  if (vis.hidden) return;
+  if (e.key === 'Escape') fermer();
+  if (e.key === 'ArrowLeft') montrer(courant - 1);
+  if (e.key === 'ArrowRight') montrer(courant + 1);
+});
+let x0 = null, y0 = null;
+const scene = document.getElementById('scene');
+scene.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+scene.addEventListener('touchend', e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) montrer(courant + (dx < 0 ? 1 : -1));
+  x0 = null;
+});
+
+// Téléchargement : sur téléphone, la feuille de partage propose « Enregistrer l'image » (pellicule).
+btn.onclick = async () => {
+  const id = IDS[courant], nom = 'Hygie-Race-4-' + NOMS[courant] + '.jpg';
+  btn.disabled = true; libelle.textContent = 'Préparation…';
+  try {
+    const r = await fetch(`https://lh3.googleusercontent.com/d/${id}=s0`);
+    if (!r.ok) throw 0;
+    const blob = await r.blob();
+    const fichier = new File([blob], nom, { type: 'image/jpeg' });
+    const mobile = matchMedia('(hover:none)').matches;
+    if (mobile && navigator.canShare && navigator.canShare({ files: [fichier] })) {
+      try { await navigator.share({ files: [fichier] }); } catch (e) {}
+    } else {
+      const url = URL.createObjectURL(blob), a = document.createElement('a');
+      a.href = url; a.download = nom; document.body.append(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 4000);
+    }
+  } catch (e) {
+    location.href = `https://drive.usercontent.google.com/download?id=${id}&export=download`;
+  } finally {
+    btn.disabled = false; libelle.textContent = 'Télécharger';
+  }
+};
+</script>
+</body>
+</html>
